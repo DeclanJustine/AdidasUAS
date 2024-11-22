@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Users", {
       id: {
         allowNull: false,
@@ -15,21 +15,28 @@ module.exports = {
       },
       email: {
         type: Sequelize.STRING,
-        unique: true,
         allowNull: false,
-        validate: {
-          isEmail: true,
-        },
+        unique: true,
       },
       password: {
         type: Sequelize.STRING,
         allowNull: false,
-        validate: {
-          is: {
-            args: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-            msg: "Passwords must have at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number, and 1 symbol.",
-          },
-        },
+      },
+      firstName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      lastName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      BOD: {
+        type: Sequelize.DATEONLY,
+        allowNull: true,
+      },
+      gender: {
+        type: Sequelize.ENUM("male", "female", "other"),
+        allowNull: true,
       },
       createdAt: {
         allowNull: false,
@@ -42,7 +49,7 @@ module.exports = {
     });
   },
 
-  async down(queryInterface, Sequelize) {
+  down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable("Users");
   },
 };

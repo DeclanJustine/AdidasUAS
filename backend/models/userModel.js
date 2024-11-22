@@ -26,6 +26,43 @@ module.exports = (sequelize) => {
         },
       },
     },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "First name cannot be empty.",
+        },
+      },
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Last name cannot be empty.",
+        },
+      },
+    },
+    BOD: { 
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      validate: {
+        isDate: {
+          msg: "Date of Birth must be a valid date.",
+        },
+      },
+    },
+    gender: {
+      type: DataTypes.ENUM("male", "female", "other"),
+      allowNull: false,
+      validate: {
+        isIn: {
+          args: [["male", "female", "other"]],
+          msg: "Gender must be 'male', 'female', or 'other'.",
+        },
+      },
+    },
   });
 
   User.addHook("beforeCreate", async (user) => {
