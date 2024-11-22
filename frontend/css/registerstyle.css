@@ -19,7 +19,7 @@ body {
     border: 2px solid rgb(153, 153, 153);   
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 400px;
+    width: 600px;
 }
 
 h1 {
@@ -72,4 +72,8 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.gender-option {
+    display: flex; align-items: center; gap: 10px;
 }

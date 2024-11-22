@@ -16,23 +16,43 @@
                 <div class="form-group">
                     <label for="username">Username :</label>
                     <input type="text" id="username" ng-model="user.username" required>
-                </div>
-
+                </div>       
                 <div class="form-group">
                     <label for="email">Email :</label>
                     <input type="email" id="email" ng-model="user.email" required>
                 </div>
-
                 <div class="form-group">
                     <label for="password">Password :</label>
-                    <input type="password" id="password" ng-model="user.password" required>
-                </div>
-
+                    <input type="password" id="password" ng-model="user.password" required
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                        title="Password must have at least 8 characters, including uppercase, lowercase, number, and symbol.">
+                </div>            
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password :</label>
                     <input type="password" id="confirmPassword" ng-model="user.confirmPassword" required>
+                </div>           
+                <div class="form-group">
+                    <label for="firstName">First Name :</label>
+                    <input type="text" id="firstName" ng-model="user.firstName" required>
+                </div>            
+                <div class="form-group">
+                    <label for="lastName">Last Name :</label>
+                    <input type="text" id="lastName" ng-model="user.lastName" required>
                 </div>
-
+            
+                <div class="form-group">
+                    <label for="BOD">Date of Birth :</label>
+                    <input type="date" id="BOD" ng-model="user.BOD">
+                </div>
+                <div class="form-group gender-option">
+                    <label for="gender">Gender :</label> <select id="gender" ng-model="user.gender">
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>     
+                <br>   
                 <button type="submit">Register</button>
             </form>
         </div>

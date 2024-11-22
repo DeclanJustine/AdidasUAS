@@ -3,12 +3,22 @@ angular.module('myApp').controller('RegisterController', function($scope, $http,
         username: "",
         email: "",
         password: "",
-        confirmPassword: ""
+        confirmPassword: "",
+        firstName: "",
+        lastName: "",
+        BOD: "",
+        gender: ""
     };
 
     $scope.register = async function() {
         if ($scope.user.password !== $scope.user.confirmPassword) {
-            alert("Password and Confirm Password doesn't match");
+            alert("Password and Confirm Password don't match");
+            return;
+        }
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if (!passwordRegex.test($scope.user.password)) {
+            alert("Passwords must have at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number, and 1 symbol.");
             return;
         }
 
@@ -18,6 +28,10 @@ angular.module('myApp').controller('RegisterController', function($scope, $http,
                 email: $scope.user.email,
                 password: $scope.user.password,
                 confirmPassword: $scope.user.confirmPassword,
+                firstName: $scope.user.firstName,
+                lastName: $scope.user.lastName,
+                BOD: $scope.user.BOD,
+                gender: $scope.user.gender
             });
 
             if (response.data.message) {
