@@ -3,25 +3,57 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs"); 
 
 const createUser = async (req, res) => {
-  const { username, email, password, confirmPassword } = req.body;
+  const { username, email, password, confirmPassword, firstName, lastName, BOD, gender } = req.body;
 
   try {
     if (password !== confirmPassword) {
-      return res
-        .status(400)
-        .json({ message: "Password and Confirm Password doesn't match" });
+      return res.status(400).json({ 
+        message: "Password and Confirm Password don't match." 
+      });
     }
 
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) {
-      return res.status(400).json({ message: "Email has already been used." });
+      return res.status(400).json({ 
+        message: "Email has already been used." 
+      });
     }
 
-    const newUser = await User.create({ username, email, password });
-    res.status(201).json({ message: "User successfully created.", user: newUser });
+    if (password.length < 8) {
+      return res.status(400).json({ 
+        message: "Password must be at least 8 characters long." 
+      });
+    }
+
+    const newUser = await User.create({
+      username,
+      email,
+      password,
+      firstName,
+      lastName,
+      BOD,
+      gender
+    });
+
+    res.status(201).json({ 
+      message: "User successfully created.", 
+      user: { 
+        id: newUser.id, 
+        username: newUser.username, 
+        email: newUser.email, 
+        firstName: newUser.firstName, 
+        lastName: newUser.lastName, 
+        BOD: newUser.BOD, 
+        gender: newUser.gender, 
+        createdAt: newUser.createdAt 
+      } 
+    });
   } catch (error) {
     console.error("Error creating user data:", error);
-    res.status(500).json({ message: "An error occured while creating user data." });
+    res.status(500).json({ 
+      message: "An error occurred while creating user data.", 
+      error: error.message 
+    });
   }
 };
 
