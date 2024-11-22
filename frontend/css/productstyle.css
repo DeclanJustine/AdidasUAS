@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: rgb(225, 225, 225);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .headerSection {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgb(225, 225, 225);
+    border-bottom: 2px solid rgb(153, 153, 153);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 20px;
+  }
+  
+  .navbar {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 40px;
+    right: 0;
+    background-color: rgb(161, 160, 160);
+    width: 10%;
+  }
+
+  .navbar a {
+    display: block;
+    font-size: 1rem;
+    margin: 1rem 0;
+    padding-left: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    color: black;
+    border-bottom: 1px solid #000000;
+  }
+  
+  .navbar.active {
+    display: block;
+  }
+  
+  .logo-container {
+    top: -8px;
+    left: 20px;
+    z-index: 2;
+  }
+  
+  .logo-container img {
+    width: 90px;
+    height: auto;
+    margin-top: -13px;
+  }
+
+  .adidasLogo {
+    position: absolute;
+    left: 20px;
+    width: 90px;
+    height: 60px;
+  }
+  
+  #menu-icon {
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+    margin-right: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .product-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    margin: 60px auto 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-images {
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+  
+  .product-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: contain;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-details {
+    text-align: center;
+  }
+  
+  .product-details h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .product-details p#productPrice {
+    font-size: 22px;
+    font-weight: bold;
+    color: #e63946;
+    margin-bottom: 15px;
+  }
+  
+  .product-description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .product-size {
+    margin-bottom: 20px;
+  }
+  
+  .product-size label {
+    font-weight: 600;
+  }
+  
+  select#size {
+    padding: 8px;
+    font-size: 14px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 12px 24px;
+    font-size: 16px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button#buyNow {
+    background-color: #e63946;
+    color: white;
+    width: 30%;
+  }
+  
+  button#buyNow:hover {
+    background-color: #d62839;
+  }
+
+.notification {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+  
+  @media (max-width: 768px) {
+    #menu-icon {
+      display: flex;
+      justify-content: end;
+      cursor: pointer;
+      margin-right: 1rem;
+      font-size: 1.1rem;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .product-page {
+      padding: 15px;
+    }
+  
+    .product-images {
+      max-width: 250px;
+    }
+  
+    .product-details h1 {
+      font-size: 20px;
+    }
+  
+    .product-details p#productPrice {
+      font-size: 20px;
+    }
+  
+    button {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+  
+    .adidasLogo {
+      width: 40px;
+    }
+  }
+  

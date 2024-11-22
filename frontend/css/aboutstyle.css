@@ -1,0 +1,366 @@
+* {
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(225, 225, 225);
+    color: #333;
+}
+
+section {
+    margin: 60px auto; 
+    padding: 50px 20px; 
+    max-width: 1200px; 
+    background-color: rgb(225, 225, 225); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+    border-radius: 10px; 
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-container {
+    width: 15%; 
+    position: fixed;
+    top: 7px;
+    left: 20px;
+    z-index: 2;
+}
+
+.adidasLogo {
+    width: 90px;
+    height: auto;
+}
+
+nav {
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: rgb(225, 225, 225);
+    top: 0;
+    border-bottom: 2px solid rgb(153, 153, 153);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    flex: 1; 
+}
+
+.nav-links a {
+    font-size: 2rem;
+    color: #2f2f2f;
+    margin: 0 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ff4500;
+}
+
+.profile-container {
+    width: 5%;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.profile-icon {
+    font-size: 25px;
+    position: fixed;
+    top: 5px;
+    right: 20px;
+    z-index: 2;
+}
+
+.profile-icon:hover {
+    transform: scale(1.1);
+}
+
+#menu-icon {
+    display: none; 
+}
+
+.about-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.about-content {
+    max-width: 600px;
+}
+
+.about-title {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.about-description {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555; 
+}
+
+.about-image img {
+    width: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.values-section {
+    text-align: center;
+}
+
+.values-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+.values-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.value-box {
+    width: 250px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.value-box:hover {
+    transform: scale(1.05);
+}
+
+.value-box i {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.value-box h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.value-box p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.history-section {
+    text-align: center;
+}
+
+.history-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.history-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.descBottom {
+    display: flex;
+    background-color: #333333;
+    height: 40px;
+    color: white;
+    padding: 0 20px;
+}
+  
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+  
+.flag-container {
+    display: flex;
+    align-items: center;
+}
+  
+.flag {
+    margin-right: 5px;
+    width: 20px;
+}
+  
+.countryName {
+    margin: 0;
+    font-size: 12px;
+    color: #edeff38b;
+    font-weight: 400;
+}
+  
+@media (max-width: 1200px) {
+    section {
+        padding: 30px 15px;
+    }
+
+    .about-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-image img {
+        width: 80%;
+        max-width: 400px;
+    }
+
+    .values-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .value-box {
+        margin-bottom: 20px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 991px) {
+    nav a {
+        font-size: 1.5rem;
+        margin-left: 40px;
+    }
+
+    .about-title {
+        font-size: 30px;
+    }
+
+    .about-description {
+        font-size: 16px;
+    }
+
+    .values-title {
+        font-size: 28px;
+    }
+
+    .value-box {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 40px;
+        right: 0;
+        background-color: rgb(161, 160, 160);
+        width: 21%;
+    }
+
+    .navbar.active {
+        display: flex; 
+    }
+
+    #menu-icon {
+        display: block; 
+        font-size: 2rem;
+        color: #2f2f2f;
+        position: fixed;
+        top: 6px;
+        left: 87%;
+        z-index: 3;
+    }
+
+    .nav-links {
+        width: 100%;
+        display: block;
+        text-align: left;
+    }
+
+    .nav-links a {
+        padding: 0px;
+        border-bottom: 1px solid #ddd;
+        width: 100%;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 1rem;
+        margin: 1rem 0;
+        padding-left: 10px;
+        border-bottom: 1px solid #000000;
+    }
+
+    .profile-container {
+        width: 100%; 
+        padding: 10px 0;
+        justify-content: center;
+    }
+
+    .profile-icon {
+        top: 7px;
+        font-size: 30px;
+        display: block;
+        text-align: center;
+    }
+
+    .about-section {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .about-image img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .value-box {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 617px) {
+    #menu-icon {
+        display: block; 
+        font-size: 2rem;
+        color: #2f2f2f;
+        position: fixed;
+        top: 6px;
+        left: 84%;
+        z-index: 3;
+    }
+}
+
+@media (max-width: 492px) {
+    #menu-icon {
+        display: block; 
+        font-size: 2rem;
+        color: #2f2f2f;
+        position: fixed;
+        top: 6px;
+        left: 80%;
+        z-index: 3;
+    }
+}

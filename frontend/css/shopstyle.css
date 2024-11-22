@@ -1,0 +1,424 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+body {
+  background-color: rgb(225, 225, 225);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(225, 225, 225); 
+  display: flex;
+  z-index: 1;
+}
+
+.logo-container {
+  width: 20%;
+  display: flex;
+  align-items: center; 
+  justify-content: flex;
+  border-bottom: 2px solid rgb(153, 153, 153);
+  z-index: 2;
+}
+
+.adidasLogo {
+  width: 90px;
+  height: auto;
+}
+
+nav {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; 
+  border-bottom: 2px solid rgb(153, 153, 153);
+  z-index: 1;
+}
+
+nav a {
+  font-size: 2rem;
+  color: #2f2f2f;
+  margin-left: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff4500;
+}
+
+.navbar {
+  display: flex;
+}
+
+#menu-icon {
+  display: none;
+}
+
+
+#menu-icon {
+  display: none;
+}
+
+
+.content {
+  width: 100%;
+  height: auto;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 60px;
+}
+
+.card {
+  width: 400px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 20px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.men {
+  background-image: url('/frontend/assets/logo/menLogo.png');
+}
+
+.women {
+  background-image: url('/frontend/assets/logo/womenLogo.png');
+}
+
+.kids {
+  background-image: url('/frontend/assets/logo/kidsLogo.png');
+}
+
+.card button {
+  background: linear-gradient(to right, #b0b0b0, #000000);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 40%;
+  margin-left: 100px;
+}
+
+.card button:hover {
+  transform: scale(1.15);
+  transition: 0.2s;
+}
+
+.productContent {
+  margin: auto;
+  margin-top: 80px;
+  text-align: center;
+  width: 80%;
+  overflow: hidden;
+  position: relative;
+}
+
+.titleContent {
+  text-align: center;
+  font-size: 60px;
+  font-weight: bold;
+  color: #333;
+}
+
+.productContainer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.productItem {
+  width: 20%;
+  background-color: rgb(225, 225, 225);
+  padding: 24px;
+  text-align: center;
+}
+
+.productItem img {
+  width: 100%;
+  background-color: #e6e3db;
+  margin-bottom: 10px;
+  border-radius: 35px;
+}
+
+.productTitle {
+  font-weight: 600;
+  margin-bottom: 5px;
+  text-align: start;
+  font-size: 16px;
+}
+
+.productPrice {
+  color: #333333;
+  text-align: start;
+  font-size: 13px;
+}
+
+.descSection {
+  width: 100%;
+}
+
+.descContent {
+  background-color: #c4c4c4;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.descContainer {
+  flex-basis: 48%;
+  padding: 0 0;
+}
+
+.descTitle {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.descDesc {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+
+.descBottom {
+  display: flex;
+  background-color: #333333;
+  width: 100%;
+  height: 40px;
+  color: white;
+  padding: 0 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.flag-container {
+  display: flex;
+  align-items: center;
+}
+
+.flag {
+  margin-right: 5px;
+  width: 20px;
+}
+
+.countryName {
+  margin: 0;
+  font-size: 12px;
+  color: #edeff38b;
+  font-weight: 400;
+}
+
+
+/* Responsif untuk layar di bawah 1200px */
+@media (max-width: 1200px) {
+  .content {
+    width: 100%;
+    height: auto;
+  }
+
+  .container {
+    gap: 30px;
+  }
+
+  .card {
+    width: 300px;
+    height: 500px;
+  }
+
+  .productItem {
+    width: 22%;
+  }
+
+  .titleContent {
+    font-size: 48px;
+  }
+}
+
+/* Responsif untuk layar di bawah 991px */
+@media (max-width: 991px) {
+  nav a {
+    font-size: 1.5rem;
+    margin-left: 30px;
+  }
+
+  .logo-container {
+    border: none;
+  }
+
+  .container {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .card {
+    width: 250px;
+    height: 450px;
+  }
+
+  .productItem {
+    width: 45%;
+  }
+
+  .titleContent {
+    font-size: 40px;
+  }
+
+  .descContent {
+    padding: 20px;
+  }
+
+  .descContainer {
+    flex-basis: 100%;
+  }
+}
+
+/* Responsif untuk layar di bawah 768px */
+@media (max-width: 768px) {
+  body {
+    width: 95%;
+  }
+
+  .logo-container {
+    border: none;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 20px;
+    right: 0;
+    background-color: rgb(161, 160, 160);
+    width: 25%;
+}
+
+#menu-icon {
+    display: block;
+    cursor: pointer;
+    position: fixed;
+    font-size: 1.1rem;
+    margin-top: 1px;
+    left: 92%;
+    border-bottom: 1px black;
+}
+
+.navbar.active {
+    display: block;
+}
+
+.navbar a {
+    display: block;
+    font-size: 1rem;
+    margin: 1rem 0;
+    padding-left: 10px;
+    border-bottom: 1px solid #000000;
+}
+
+.adidasLogo {
+    display: fixed;
+    width: 70px;
+    height: auto;
+    left: 10px;
+}
+
+  .content {
+    width: 110%;
+    height: auto;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card {
+    width: 200px;
+    height: 400px;
+  }
+
+  .card button {
+    background: linear-gradient(to right, #b0b0b0, #000000);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 60%;
+    margin-left: 45px;
+  }
+
+  .productContainer {
+    flex-wrap: wrap;
+  }
+
+  .productItem {
+    width: 100%;
+  }
+
+  .descContent {
+    padding: 10px;
+  }
+
+  .descBottom {
+    height: 30px;
+    font-size: 10px;
+    width: 97%;
+  }
+
+  .flagContainer {
+    width: auto;
+  }
+
+  .flag {
+    width: 15px;
+  }
+
+  .countryName {
+    font-size: 10px;
+  }
+}

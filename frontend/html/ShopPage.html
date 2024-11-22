@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop Page</title>
+  <link rel="stylesheet" href="/frontend/css/shopstyle.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+  <div class="header-container">
+    <div class="logo-container">
+      <img src="/frontend/assets/logo/adidasLogo.png" alt="Adidas Logo" class="adidasLogo">
+    </div>
+    <i class="fas" ng-class="{'fa-bars': !isMenuActive, 'fa-times': isMenuActive}" ng-click="toggleMenu()"
+    id="menu-icon"></i>
+    <nav class="navbar" ng-class="{'active': isMenuActive}">
+      <a href="#!/home">Home</a>
+      <a href="#!/men">Men</a>
+      <a href="#!/women">Women</a>
+      <a href="#!/kids">Kids</a>
+    </nav>
+  </div>
+
+  <div class="content">
+    <video autoplay loop preload="auto" muted>
+      <source src="/frontend/assets/video/adidas.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <br /><br /><br /><br /><br />
+
+  <div class="container">
+    <div class="card men">
+      <a href="#!/men"> <button>MEN →</button> </a>
+    </div>
+    <div class="card women">
+      <a href="#!/women"> <button>WOMEN →</button> </a>
+    </div>
+    <div class="card kids">
+      <a href="#!/kids"> <button>KIDS →</button> </a>
+    </div>
+  </div>
+
+  <div class="productContent">
+    <div class="titleContent">Our Best Products</div>
+    <div class="productContainer">
+      <div class="productItem">
+        <a href="/frontend/html/ProductDetail/KidsShoes/KidsRun2.html">
+          <img src="/frontend/assets/kidsshoes/KIDS(RUNNING 2) - Marvel Spiderman.png" alt="Product 1" />
+        </a>
+        <p class="productTitle">ADIDAS RAPIDARUN X MARVEL SPIDERMAN</p>
+        <p class="productPrice">Rp. 1.399.000</p>
+      </div>
+      <div class="productItem">
+        <a href="/frontend/html/ProductDetail/MenShoes/MenRun1.html">
+          <img src="/frontend/assets/menshoes/MAN(RUNNING 1) - Parley.png" alt="Product 2" />
+        </a>
+        <p class="productTitle">ADIDAS ULTRABOOST DNA X PARLEY</p>
+        <p class="productPrice">Rp. 2.492.000</p>
+      </div>
+      <div class="productItem">
+        <a href="/frontend/html/ProductDetail/WomenShoes/WomenSport7.html">
+          <img src="/frontend/assets/womenshoes/WOMAN(SPORTS 7) - Stella McCartney.png" alt="Product 3" />
+        </a>
+        <p class="productTitle">ADIDAS PREDATOR FREAK X STELLA MCCARTNEY</p>
+        <p class="productPrice">Rp. 3.613.000</p>
+      </div>
+      <div class="productItem">
+        <a href="/frontend/html/ProductDetail/WomenShoes/WomenRun1.html">
+          <img src="/frontend/assets/womenshoes/WOMEN(RUNNING 1) - Raf Simons.png" alt="Product 4" />
+        </a>
+        <p class="productTitle">ADIDAS OZWEEGO 3 X RAF SIMONS</p>
+        <p class="productPrice">Rp. 4.653.000</p>
+      </div>
+    </div>
+    <div class="productContainer">
+      <div class="productItem">
+        <a href="/frontend/html/ProductDetail/MenShoes/MenRun6.html">
+          <img src="/frontend/assets/menshoes/MAN(RUNNING 6) - Undefeated.png" alt="Product 5" />
+        </a>
+        <p class="productTitle">ADIDAS ULTRABOOST X UNDEFEATED</p>
+        <p class="productPrice">Rp. 6.610.000</p>
+      </div>
+      <div class="productItem">
+        <a href="/frontend/html/ProductDetail/MenShoes/MenSport2.html">
+          <img src="/frontend/assets/menshoes/MAN(SPORT 2) - Prada.png" alt="Product 6" />
+        </a>
+        <p class="productTitle">ADIDAS CRAZYFAST X PRADA</p>
+        <p class="productPrice">Rp. 7.580.000</p>
+      </div>
+      <div class="productItem">
+        <a href="/frontend/html/ProductDetail/MenShoes/MenOri6.html">
+          <img src="/frontend/assets/menshoes/MAN(ORIGINAL 6) - Alexander Wang.png" alt="Product 7" />
+        </a>
+        <p class="productTitle">ADIDAS X ALEXANDER WANG SKATE SUPER</p>
+        <p class="productPrice">Rp. 10.172.000</p>
+      </div>
+      <div class="productItem">
+        <a href="/frontend/html/ProductDetail/WomenShoes/WomenSport1.html">
+          <img src="/frontend/assets/womenshoes/WOMAN(SPORTS 1) - Ivy Park.png" alt="Product 8" />
+        </a>
+        <p class="productTitle">ADIDAS ULTRABOOST OG X IVY PARK</p>
+        <p class="productPrice">Rp. 1.999.000</p>
+      </div>
+    </div>
+  </div>
+  <br /><br /><br />
+  <div class="descSection">
+    <div class="descContent">
+      <div class="descContainer">
+        <p class="descTitle">
+          GET THE LATEST ADIDAS SHOE COLLECTION
+        </p>
+        <p class="descDesc">
+          Discover the latest and most comprehensive Adidas shoe collection at the Official Adidas Indonesia Online
+          Store. From sports shoes to sneakers, we offer a wide range of shoe options that cater to every moment and
+          need. With high-quality materials and stylish designs, Adidas shoes are the perfect choice for you.
+          Our collection includes Adidas Originals, which offers classic and iconic designs that are perfect for
+          everyday wear. Our Sports collection is designed for performance and comfort, with features like breathable
+          mesh panels and cushioned insoles. Meanwhile, our Running Shoes collection is perfect for those who love to
+          run and stay active, with features like supportive arches and lightweight materials.
+          Whether you're looking for a stylish and comfortable shoe for everyday wear, or a high-performance shoe for
+          your next workout, we have the perfect option for you. With a wide range of styles and colors to choose from,
+          you're sure to find the perfect shoe to fit your unique style and needs.
+        </p>
+      </div>
+      <div class="descContainer">
+        <p class="descTitle">
+          ADIDAS INDONESIA: YOUR GO-TO DESTINATION FOR SHOES
+        </p>
+        <p class="descDesc">
+          The Official Adidas Indonesia Online Store is your go-to destination for shoes. We offer a wide range of
+          Adidas shoe styles, from Adidas Originals to Sports and Running Shoes. With competitive prices and
+          high-quality products, we are the perfect choice for anyone looking for Adidas shoes that meet their needs.
+          Our Adidas Originals collection features classic and iconic designs that are perfect for everyday wear. Our
+          Sports collection is designed for performance and comfort, with features like breathable mesh panels and
+          cushioned insoles. Meanwhile, our Running Shoes collection is perfect for those who love to run and stay
+          active, with features like supportive arches and lightweight materials.
+          At Adidas Indonesia, we're committed to providing high-quality products that meet the needs of our customers.
+          Our shoes are made with durable materials and designed to last, so you can enjoy them for years to come. Plus,
+          with a wide range of styles to choose from, you can find the perfect shoe to fit your budget and lifestyle.
+        </p>
+      </div>
+    </div>
+    <div class="descBottom">
+      <div class="row">
+        <div class="flag-container">
+          <img src="/frontend/assets/logo/flagLogo.png" alt="Flag" class="flag">
+          <p class="countryName">
+            ID | Privacy Politics | TERMS & CONDITIONS | COPYRIGHT 2024 ADIDAS
+            INDONESIA
+          </p>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>
