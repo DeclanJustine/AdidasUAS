@@ -78,53 +78,50 @@ const loginUser = async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
-    const user = await User.findOne({
-      where: { username, email },
-    });
+      const user = await User.findOne({
+          where: { username, email },
+      });
 
-    if (!user) {
-      return res.status(400).json({ error: "Username or email not found." });
-    }
+      if (!user) {
+          return res.status(400).json({ error: "Username or email not found." });
+      }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-    if (!isPasswordValid) {
-      return res.status(400).json({ error: "Wrong Password." });
-    }
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+      if (!isPasswordValid) {
+          return res.status(400).json({ error: "Wrong Password." });
+      }
 
-    const token = jwt.sign(
-      { id: user.id, username: user.username, email: user.email },
-      process.env.JWT_SECRET,
-      { expiresIn: '1h' }
-    );
+      const token = jwt.sign(
+          { id: user.id, username: user.username, email: user.email },
+          process.env.JWT_SECRET,
+          { expiresIn: '1h' }
+      );
 
-    const sessionStartTime = new Date(); 
-    const sessionEndTime = new Date(sessionStartTime.getTime() + 60 * 60 * 1000);
+      const sessionStartTime = new Date();
+      const sessionEndTime = new Date(sessionStartTime.getTime() + 60 * 60 * 1000);
 
-    const sessionStartTimeFormatted = sessionStartTime.toLocaleString(); 
-    const sessionEndTimeFormatted = sessionEndTime.toLocaleString();     
+      req.session.user = {
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          sessionStartTime: sessionStartTime.toLocaleString(),
+          sessionEndTime: sessionEndTime.toLocaleString(),
+      };
 
-    req.session.user = {
-      id: user.id,
-      username: user.username,
-      email: user.email,
-      sessionStartTime: sessionStartTimeFormatted,  
-      sessionEndTime: sessionEndTimeFormatted,  
-    };
+      console.log('Session started:', req.session.user); 
 
-    res.status(200).json({
-      message: "Login Success!",
-      id: user.id,
-      username: user.username,
-      email: user.email,
-      token: token,
-    });
+      res.status(200).json({
+          message: "Login Success!",
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          token: token,
+      });
   } catch (error) {
-    console.error("Error while login:", error);
-    res.status(500).json({ error: "An error occurred during login." });
+      console.error("Error while login:", error);
+      res.status(500).json({ error: "An error occurred during login." });
   }
 };
-
-
 
 const logoutUser = (req, res) => {
   req.session.destroy((err) => {
@@ -169,11 +166,16 @@ const getUserProfile = async (req, res) => {
     res.status(200).json({
       username: user.username,
       email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      BOD: user.BOD,
+      gender: user.gender
     });
   } catch (error) {
     console.error("Error retrieving user profile:", error);
     res.status(500).json({ error: "An error occurred while retrieving the user profile." });
   }
 };
+
 
 module.exports = { createUser, getAllUsers, loginUser, getUserProfile, logoutUser, checkSession };

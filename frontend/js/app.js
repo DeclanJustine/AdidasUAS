@@ -10,6 +10,10 @@ app.config(function($routeProvider) {
             templateUrl: "/frontend/html/Register.html",
             controller: "RegisterController"
         })
+        .when("/profile", {
+            templateUrl: "/frontend/html/Profile.html",
+            controller: "ProfileController"
+        })
         .when("/home", {
             templateUrl: "/frontend/html/LandingPage.html",
             controller: "LandingController"

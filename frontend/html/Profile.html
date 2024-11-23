@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/frontend/css/profilestyle.css">
+</head>
+
+<body ng-controller="ProfileController">
+    <div class="container">
+        <div class="logo-container">
+            <img src="/frontend/assets/logo/adidasLogo.png" alt="Adidas Logo" class="adidasLogo">
+        </div>
+        <i class="fas" ng-class="{'fa-bars': !isMenuActive, 'fa-times': isMenuActive}" ng-click="toggleMenu()"
+            id="menu-icon"></i>
+        <nav class="navbar" ng-class="{'active': isMenuActive}">
+            <div class="nav-links">
+                <a href="#!/home">Home</a>
+                <a href="#!/about">About</a>
+                <a href="#!/shop">Shop</a>
+            </div>
+        </nav>
+        <div class="profile-container">
+            <a href="#!/profile"><i class="fas fa-user-circle profile-icon"></i></a>
+        </div>
+    </div>
+
+    <div class="info">
+        <div class="main-container">
+            <h1>Profile Information</h1>
+            <div class="container">
+                <div class="left-section">
+                    <p>Username: <span>{{ userProfile.username }}</span></p>
+                    <p>Email: <span>{{ userProfile.email }}</span></p>
+                    <p>First Name: <span>{{ userProfile.firstName }}</span></p>
+                    <p>Last Name: <span>{{ userProfile.lastName }}</span></p>
+                    <p>Date of Birth: <span>{{ userProfile.BOD }}</span></p>
+                    <p>Gender: <span>{{ userProfile.gender }}</span></p>
+                </div>
+
+                <div class="right-section">
+                    <form>
+                        <label for="new-password">New Password</label>
+                        <input type="password" id="new-password" placeholder="Enter new password">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" placeholder="Confirm new password">
+                        <div class="button-group">
+                            <button type="submit" class="change-password">Change Password</button>
+                            <button type="button" class="delete-account">Delete Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

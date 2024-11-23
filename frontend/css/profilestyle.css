@@ -1,0 +1,171 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(225, 225, 225);
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-container {
+    width: 15%;
+    position: fixed;
+    top: 7px;
+    left: 20px;
+    z-index: 2;
+}
+
+.adidasLogo {
+    width: 90px;
+    height: auto;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: rgb(225, 225, 225);
+    top: 0;
+    border-bottom: 2px solid rgb(153, 153, 153);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.nav-links a {
+    font-size: 2rem;
+    color: #2f2f2f;
+    margin: 0 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ff4500;
+}
+
+.profile-container {
+    width: 5%;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.profile-icon {
+    font-size: 25px;
+    position: fixed;
+    top: 5px;
+    right: 20px;
+    z-index: 2;
+}
+
+.profile-icon:hover {
+    transform: scale(1.1);
+}
+
+#menu-icon {
+    display: none;
+}
+
+.main-container {
+    width: 1000px;
+    background-color: rgb(225, 225, 225);
+    border-radius: 10px;
+    border: 2px solid rgb(153, 153, 153);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.left-section,
+.right-section {
+    font-size: 18px;
+    flex: 1;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: rgb(225, 225, 225);
+    border-radius: 10px;
+    border: 2px solid rgb(153, 153, 153);
+}
+
+.right-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.right-section form .button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.right-section form input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.right-section form button {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.right-section form .delete-account {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.right-section form .delete-account:hover {
+    background-color: #ff1a1a;
+}
+
+.right-section form .change-password {
+    background-color: #4caf50;
+    color: white;
+}
+
+.right-section form .change-password:hover {
+    background-color: #45a049;
+}
