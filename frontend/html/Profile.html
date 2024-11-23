@@ -46,18 +46,21 @@
                 
 
                 <div class="right-section">
-                    <form>
-                        <label for="new-password">Recent Password</label>
-                        <input type="password" id="recent-password" placeholder="Enter recent password">
+                    <form ng-submit="changePassword()">
+                        <label for="recent-password">Recent Password</label>
+                        <input type="password" id="recent-password" ng-model="passwordData.currentPassword" placeholder="Enter recent password" required>
+                    
                         <label for="new-password">New Password</label>
-                        <input type="password" id="new-password" placeholder="Enter new password">
+                        <input type="password" id="new-password" ng-model="passwordData.newPassword" placeholder="Enter new password" required>
+                    
                         <label for="confirm-password">Confirm Password</label>
-                        <input type="password" id="confirm-password" placeholder="Confirm new password">
+                        <input type="password" id="confirm-password" ng-model="passwordData.confirmNewPassword" placeholder="Confirm new password" required>
+                    
                         <div class="button-group">
                             <button type="submit" class="change-password">Change Password</button>
-                            <button type="button" class="delete-account">Delete Account</button>
+                            <button type="button" class="delete-account" ng-click="deleteAccount()">Delete Account</button>
                         </div>
-                    </form>
+                    </form>                    
                 </div>
             </div>
         </div>
