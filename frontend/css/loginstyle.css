@@ -11,6 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    padding: 20px;
 }
 
 .container {
@@ -19,7 +20,8 @@ body {
     border: 2px solid rgb(153, 153, 153);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 30px;
-    width: 400px;
+    width: 400px; 
+    margin: 0 auto;
 }
 
 h1 {
@@ -72,4 +74,28 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;  /* Reduce padding on smaller screens */
+    }
+
+    h1 {
+        font-size: 28px;  /* Adjust font size for small screens */
+    }
+
+    input, button {
+        font-size: 14px;  /* Adjust font size of inputs and button */
+        padding: 8px;     /* Adjust padding */
+    }
+
+    label {
+        font-size: 12px;  /* Adjust font size of labels */
+    }
+
+    p {
+        font-size: 14px;  /* Adjust paragraph text size */
+    }
 }
