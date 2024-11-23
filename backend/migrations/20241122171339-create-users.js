@@ -32,11 +32,11 @@ module.exports = {
       },
       BOD: {
         type: Sequelize.DATEONLY,
-        allowNull: true,
+        allowNull: false,
       },
       gender: {
         type: Sequelize.ENUM("male", "female", "other"),
-        allowNull: true,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

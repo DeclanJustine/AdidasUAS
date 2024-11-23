@@ -5,6 +5,7 @@ const authenticateToken = require("../middlewares/authenticateToken");
 
 router.post("/users", userController.createUser);
 router.post("/login", userController.loginUser);
+router.post("/changepassword", authenticateToken, userController.changePassword);
 router.post("/logout", authenticateToken, userController.logoutUser);
 
 router.get("/users", userController.getAllUsers);

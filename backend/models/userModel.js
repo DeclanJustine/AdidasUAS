@@ -71,5 +71,13 @@ module.exports = (sequelize) => {
     user.password = await bcrypt.hash(user.password, salt);
   });
 
+  User.addHook("beforeUpdate", async (user) => {
+    if (user.password && user.changed('password')) {
+      const bcrypt = require('bcrypt');
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(user.password, salt);
+    }
+  });
+
   return User;
 };

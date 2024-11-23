@@ -177,5 +177,44 @@ const getUserProfile = async (req, res) => {
   }
 };
 
+const changePassword = async (req, res) => {
+  const { recentPassword, newPassword, confirmNewPassword } = req.body;
 
-module.exports = { createUser, getAllUsers, loginUser, getUserProfile, logoutUser, checkSession };
+  try {
+    if (!recentPassword || !newPassword || !confirmNewPassword) {
+      return res.status(400).json({ message: "All fields are required." });
+    }
+
+    if (newPassword !== confirmNewPassword) {
+      return res.status(400).json({ message: "New password and confirm password don't match." });
+    }
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    
+    if (!passwordRegex.test(newPassword)) {
+      return res.status(400).json({ message: "Password must have at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number, and 1 symbol." });
+    }
+
+    const user = await User.findByPk(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    const isRecentPasswordValid = await bcrypt.compare(recentPassword, user.password);
+    if (!isRecentPasswordValid) {
+      return res.status(400).json({ message: "Recent password is incorrect." });
+    }
+
+    user.password = newPassword; 
+    await user.save();
+
+    res.status(200).json({ message: "Password updated successfully." });
+  } catch (error) {
+    console.error("Error changing password:", error);
+    res.status(500).json({ message: "An error occurred while changing the password.", error: error.message });
+  }
+};
+
+
+module.exports = { createUser, getAllUsers, loginUser, getUserProfile, logoutUser, checkSession, changePassword};
