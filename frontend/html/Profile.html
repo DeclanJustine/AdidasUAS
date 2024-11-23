@@ -41,10 +41,14 @@
                     <p>Last Name: <span>{{ userProfile.lastName }}</span></p>
                     <p>Date of Birth: <span>{{ userProfile.BOD }}</span></p>
                     <p>Gender: <span>{{ userProfile.gender }}</span></p>
+                    <button class="logout-button" ng-click="logout()">Logout</button>
                 </div>
+                
 
                 <div class="right-section">
                     <form>
+                        <label for="new-password">Recent Password</label>
+                        <input type="password" id="recent-password" placeholder="Enter recent password">
                         <label for="new-password">New Password</label>
                         <input type="password" id="new-password" placeholder="Enter new password">
                         <label for="confirm-password">Confirm Password</label>

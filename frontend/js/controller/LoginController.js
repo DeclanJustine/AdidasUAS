@@ -16,7 +16,8 @@ angular.module("myApp").controller("LoginController", function($scope, $http, $l
            if (response.status === 200) {
               if (response.data.token) {
                   localStorage.setItem('authToken', response.data.token);
-                  console.log("Token saved to localStorage");
+                  const token = localStorage.getItem('authToken');
+                  console.log("Token saved to localStorage", token);
               }
               $location.path("/home");
            } else {
