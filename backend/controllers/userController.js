@@ -216,5 +216,31 @@ const changePassword = async (req, res) => {
   }
 };
 
+const deleteAccount = async (req, res) => {
+  try {
+    const user = await User.findByPk(req.user.id);
 
-module.exports = { createUser, getAllUsers, loginUser, getUserProfile, logoutUser, checkSession, changePassword};
+    if (!user) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    await user.destroy();
+
+    req.session.destroy((err) => {
+      if (err) {
+        console.error("Error logging out:", err);
+        return res.status(500).json({ error: "Failed to log out after account deletion." });
+      }
+      res.clearCookie("connect.sid"); 
+      res.status(200).json({ message: "Account deleted successfully and logged out." });
+    });
+
+  } catch (error) {
+    console.error("Error deleting account:", error);
+    res.status(500).json({ message: "An error occurred while deleting the account.", error: error.message });
+  }
+};
+
+
+
+module.exports = { createUser, getAllUsers, loginUser, getUserProfile, logoutUser, checkSession, changePassword, deleteAccount};

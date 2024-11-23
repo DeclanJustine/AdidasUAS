@@ -12,4 +12,6 @@ router.get("/users", userController.getAllUsers);
 router.get("/profile", authenticateToken, userController.getUserProfile);
 router.get("/check-session", userController.checkSession);
 
+router.delete('/deleteaccount', authenticateToken, userController.deleteAccount);
+
 module.exports = router;
