@@ -67,7 +67,7 @@ angular.module("myApp").controller("MenController", function ($scope, $window) {
       title: "ADIDAS X STAN SMITH",
       price: "Rp. 1.530.000",
       image: "/frontend/assets/menshoes/MAN(ORIGINAL 1) - Stan Smith.png",
-      link: "ProductDetail/MenShoes/MenOri1.html",
+      link: "#!/menori1",
     },
     {
       title: "ADIDAS X PHARRELL WILLIAMS",

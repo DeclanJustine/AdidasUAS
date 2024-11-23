@@ -37,7 +37,11 @@ app.config(function($routeProvider) {
         .when("/kids", {
             templateUrl: "/frontend/html/KidsPage.html",
             controller: "KidsController"
-        })     
+        })    
+        .when("/menori1", {
+            templateUrl: "/frontend/html/ProductDetail/MenShoes/MenOri1.html",
+            controller: "ProductController"
+        })      
         .otherwise({
             redirectTo: "/"
         });

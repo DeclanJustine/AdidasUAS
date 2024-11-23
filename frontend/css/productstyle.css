@@ -1,57 +1,32 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    background-color: rgb(225, 225, 225);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+html,
+body {
+  background-color: #e5e5e5;
+  overflow-x: hidden;
+}
   
   .headerSection {
-    position: fixed;
-    top: 0;
-    width: 100%;
     background-color: rgb(225, 225, 225);
-    border-bottom: 2px solid rgb(153, 153, 153);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     padding: 10px;
-    height: 20px;
+    height: 40px;
+    border-bottom: 2px solid rgb(153, 153, 153);
   }
   
-  .navbar {
-    display: none;
-    flex-direction: column;
-    position: fixed;
-    top: 40px;
-    right: 0;
-    background-color: rgb(161, 160, 160);
-    width: 10%;
-  }
-
-  .navbar a {
-    display: block;
-    font-size: 1rem;
-    margin: 1rem 0;
-    padding-left: 10px;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-    color: black;
-    border-bottom: 1px solid #000000;
-  }
-  
-  .navbar.active {
-    display: block;
+  .line {
+    border: 2px solid #000;
   }
   
   .logo-container {
@@ -65,20 +40,49 @@
     height: auto;
     margin-top: -13px;
   }
-
-  .adidasLogo {
-    position: absolute;
-    left: 20px;
-    width: 90px;
-    height: 60px;
+  
+  .navbar {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 40px;
+    right: 0;
+    background-color: rgb(161, 160, 160);
+    width: 10%;
   }
   
   #menu-icon {
     display: flex;
     justify-content: end;
     cursor: pointer;
-    margin-right: 1rem;
     font-size: 1.1rem;
+  }
+  
+  .navbar.active {
+    display: block;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    border-bottom: 1px solid #000000;
+    color: black;
+  }
+  
+  .close-menu {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }
+  
+  .adidasLogo {
+    position: absolute;
+    left: 20px;
+    width: 90px;
+    height: 60px;
   }
 
   .product-page {

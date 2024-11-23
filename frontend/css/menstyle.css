@@ -91,13 +91,6 @@ body {
   height: 60px;
 }
 
-.homeLogo {
-  position: absolute;
-  right: 10px;
-  width: 30px;
-  height: 30px;
-}
-
 .backArrow img {
   width: 25%;
 }
