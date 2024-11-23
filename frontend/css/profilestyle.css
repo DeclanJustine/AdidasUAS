@@ -188,3 +188,96 @@ p {
 .logout-button:hover {
     background-color: #d32f2f; 
 }
+
+@media (max-width: 991px) {
+    nav a {
+        font-size: 1.5rem;
+        margin-left: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 40px;
+        right: 0;
+        background-color: rgb(161, 160, 160);
+        width: 21%;
+    }
+
+    .navbar.active {
+        display: flex; 
+    }
+
+    #menu-icon {
+        display: block; 
+        font-size: 2rem;
+        color: #2f2f2f;
+        position: fixed;
+        top: 6px;
+        left: 87%;
+        z-index: 3;
+    }
+
+    .nav-links {
+        width: 100%;
+        display: block;
+        text-align: left;
+    }
+
+    .nav-links a {
+        padding: 0px;
+        border-bottom: 1px solid #ddd;
+        width: 100%;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 1rem;
+        margin: 1rem 0;
+        padding-left: 10px;
+        border-bottom: 1px solid #000000;
+    }
+
+    .profile-container {
+        width: 100%; 
+        padding: 10px 0;
+        justify-content: center;
+    }
+
+    .profile-icon {
+        top: 7px;
+        font-size: 30px;
+        display: block;
+        text-align: center;
+    }
+
+    .left-section,
+    .right-section{
+        width: 700px;
+    }
+}
+
+@media (max-width: 431px) {
+    .left-section,
+    .right-section{
+        width: 380px;
+    }
+
+    #menu-icon {
+        display: block; 
+        font-size: 2rem;
+        color: #2f2f2f;
+        position: fixed;
+        top: 6px;
+        left: 80%;
+        z-index: 3;
+    }
+}

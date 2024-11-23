@@ -135,5 +135,9 @@ angular.module("myApp").controller("ProfileController", function($scope, $http, 
         }
     };
 
+    $scope.toggleMenu = function() {
+        $scope.isMenuActive = !$scope.isMenuActive;
+    };
+
     $scope.getUserProfile();
 });
