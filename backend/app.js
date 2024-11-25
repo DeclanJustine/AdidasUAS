@@ -3,7 +3,9 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const sequelize = require("./config/db");
 const userRoutes = require("./routes/userRoute");
+const productRoutes = require("./routes/productRoute");
 const session = require("express-session");
+const path = require("path");
 
 dotenv.config();  
 
@@ -32,6 +34,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/api", userRoutes); 
+app.use("/api", productRoutes);
+app.use("/assets", express.static(path.join(__dirname, "../frontend/assets")));
 
 app.get("/", (req, res) => {
   res.send("API is running...");

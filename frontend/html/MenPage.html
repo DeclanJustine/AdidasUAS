@@ -17,10 +17,12 @@
             <img src="/frontend/assets/logo/adidasLogo.png" alt="Adidas Logo" class="adidasLogo">
         </div>
         <div class="searchCart">
-            <input type="text" ng-model="searchInput" ng-change="searchProducts()" id="searchInput" placeholder="Cari produk...">
+            <input type="text" ng-model="searchInput" ng-change="searchProducts()" id="searchInput"
+                placeholder="Cari produk...">
             <i class="fas fa-search searchIcon"></i>
         </div>
-        <i class="fas" ng-class="{'fa-bars': !isMenuActive, 'fa-times': isMenuActive}" ng-click="toggleMenu()" id="menu-icon"></i>
+        <i class="fas" ng-class="{'fa-bars': !isMenuActive, 'fa-times': isMenuActive}" ng-click="toggleMenu()"
+            id="menu-icon"></i>
         <nav class="navbar" ng-class="{'active': isMenuActive}">
             <a href="#!/home">Home</a>
             <a href="#!/men">Men</a>
@@ -59,18 +61,23 @@
         <h1 id="originals">ORIGINALS</h1>
         <div class="line"></div>
         <section class="products" id="section2">
-            <div class="arrow arrowLeft" ng-click="moveSlide('section2', -1)">&#10094;</div>
+            <div class="arrow arrowLeft" ng-click="moveSlide('section2', -1)" ng-show="originalProducts.length > 4">
+                &#10094;</div>
             <div class="productContainer">
-                <div class="productItem" ng-repeat="product in originalProducts">
-                    <a ng-href="{{product.link}}">
-                        <img ng-src="{{product.image}}" alt="{{product.title}}" />
+                <div class="productItem" ng-repeat="product in originalProducts track by $index">
+                    <a ng-href="#!/products/men/originals/{{product.id}}">
+                        <img ng-src="{{product.image}}" alt="{{product.name}}" />
                         <p class="productSubtitle">Originals MEN</p>
-                        <p class="productTitle">{{product.title}}</p>
-                        <p class="productPrice">{{product.price}}</p>
+                        <p class="productTitle">{{product.name}}</p>
+                        <p class="productPrice">Rp {{product.price | number}}</p>
                     </a>
                 </div>
+                <div ng-if="originalProducts.length === 0" class="no-products">
+                    No products available in this category
+                </div>
             </div>
-            <div class="arrow arrowRight" ng-click="moveSlide('section2', 1)">&#10095;</div>
+            <div class="arrow arrowRight" ng-click="moveSlide('section2', 1)" ng-show="originalProducts.length > 4">
+                &#10095;</div>
         </section>
     </section>
 
@@ -78,37 +85,48 @@
         <h1 id="sports">SPORTS</h1>
         <div class="line"></div>
         <section class="products" id="section3">
-            <div class="arrow arrowLeft" ng-click="moveSlide('section3', -1)">&#10094;</div>
+            <div class="arrow arrowLeft" ng-click="moveSlide('section3', -1)" ng-show="sportsProducts.length > 4">
+                &#10094;</div>
             <div class="productContainer">
-                <div class="productItem" ng-repeat="product in sportsProducts">
-                    <a ng-href="{{product.link}}">
-                        <img ng-src="{{product.image}}" alt="{{product.title}}" />
+                <div class="productItem" ng-repeat="product in sportsProducts track by $index">
+                    <a ng-href="#!/products/men/sports/{{product.id}}">
+                        <img ng-src="{{product.image}}" alt="{{product.name}}" />
                         <p class="productSubtitle">Sports MEN</p>
-                        <p class="productTitle">{{product.title}}</p>
-                        <p class="productPrice">{{product.price}}</p>
+                        <p class="productTitle">{{product.name}}</p>
+                        <p class="productPrice">Rp {{product.price | number}}</p>
                     </a>
                 </div>
+                <div ng-if="sportsProducts.length === 0" class="no-products">
+                    No products available in this category
+                </div>
             </div>
-            <div class="arrow arrowRight" ng-click="moveSlide('section3', 1)">&#10095;</div>
+            <div class="arrow arrowRight" ng-click="moveSlide('section3', 1)" ng-show="sportsProducts.length > 4">
+                &#10095;</div>
         </section>
     </section>
 
+    <!-- Update the Running section -->
     <section class="products">
         <h1 id="running">RUNNING</h1>
         <div class="line"></div>
         <section class="products" id="section4">
-            <div class="arrow arrowLeft" ng-click="moveSlide('section4', -1)">&#10094;</div>
+            <div class="arrow arrowLeft" ng-click="moveSlide('section4', -1)" ng-show="runningProducts.length > 4">
+                &#10094;</div>
             <div class="productContainer">
-                <div class="productItem" ng-repeat="product in runningProducts">
-                    <a ng-href="{{product.link}}">
-                        <img ng-src="{{product.image}}" alt="{{product.title}}" />
+                <div class="productItem" ng-repeat="product in runningProducts track by $index">
+                    <a ng-href="#!/products/men/running/{{product.id}}">
+                        <img ng-src="{{product.image}}" alt="{{product.name}}" />
                         <p class="productSubtitle">Running MEN</p>
-                        <p class="productTitle">{{product.title}}</p>
-                        <p class="productPrice">{{product.price}}</p>
+                        <p class="productTitle">{{product.name}}</p>
+                        <p class="productPrice">Rp {{product.price | number}}</p>
                     </a>
                 </div>
+                <div ng-if="runningProducts.length === 0" class="no-products">
+                    No products available in this category
+                </div>
             </div>
-            <div class="arrow arrowRight" ng-click="moveSlide('section4', 1)">&#10095;</div>
+            <div class="arrow arrowRight" ng-click="moveSlide('section4', 1)" ng-show="runningProducts.length > 4">
+                &#10095;</div>
         </section>
     </section>
 
@@ -117,18 +135,24 @@
             <p class="titleContent">ELEVATE YOUR GAME WITH ADIDAS MEN'S SHOES</p>
             <p class="informationContent">
                 Take your shoe game to the next level with Adidas men's shoes, designed for the modern man who demands
-                performance, style, and comfort. Our collection features three main themes: Adidas Originals, Sports, and
-                Running Shoes, so you can choose the perfect pair to match your unique style. Whether you're hitting the gym,
+                performance, style, and comfort. Our collection features three main themes: Adidas Originals, Sports,
+                and
+                Running Shoes, so you can choose the perfect pair to match your unique style. Whether you're hitting the
+                gym,
                 running errands, or just lounging around, our shoes will keep up with your active lifestyle.
             </p>
         </div>
         <div class="aboutInfo">
             <p class="titleContent">FIND YOUR PERFECT MATCH WITH ADIDAS MEN'S SHOES</p>
             <p class="informationContent">
-                Discover the perfect shoes to match your unique style with Adidas men's shoes. Our Adidas Originals collection
-                features classic and iconic designs, while our Sports collection is designed for performance and comfort. Our
-                Running Shoes collection is perfect for those who love to run and stay active. With our shoes, you'll be able to
-                take on any challenge and look great doing it. Shop our latest men's shoes at the official Adidas Indonesia
+                Discover the perfect shoes to match your unique style with Adidas men's shoes. Our Adidas Originals
+                collection
+                features classic and iconic designs, while our Sports collection is designed for performance and
+                comfort. Our
+                Running Shoes collection is perfect for those who love to run and stay active. With our shoes, you'll be
+                able to
+                take on any challenge and look great doing it. Shop our latest men's shoes at the official Adidas
+                Indonesia
                 online store and experience the comfort, style, and performance that Adidas is known for.
             </p>
         </div>
@@ -136,9 +160,12 @@
             <p class="titleContent">ADIDAS MEN'S SHOES: WHERE PERFORMANCE MEETS STYLE</p>
             <p class="informationContent">
                 Experience the ultimate performance and style with Adidas men's shoes. Our shoes are designed to provide
-                superior support and cushioning, while also looking great. Whether you're into sports, fashion, or just want a
-                comfortable pair of shoes, our collection has got you covered. Our Adidas Originals collection is perfect for
-                those who want a classic and stylish look, while our Sports collection is designed for performance and comfort.
+                superior support and cushioning, while also looking great. Whether you're into sports, fashion, or just
+                want a
+                comfortable pair of shoes, our collection has got you covered. Our Adidas Originals collection is
+                perfect for
+                those who want a classic and stylish look, while our Sports collection is designed for performance and
+                comfort.
                 Our Running Shoes collection is perfect for those who love to run and stay active.
             </p>
         </div>

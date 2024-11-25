@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adidas Indonesia - Men's Collection</title>
+  <title>Adidas Indonesia - Kids' Collection</title>
   <link rel="stylesheet" href="/frontend/css/menstyle.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
 </head>
 
-<body ng-controller="WomenController">
+<body ng-controller="KidsController">
   <div class="headerSection">
     <div class="logo-container">
       <img src="/frontend/assets/logo/adidasLogo.png" alt="Adidas Logo" class="adidasLogo">
@@ -60,14 +60,20 @@
   <section class="products">
     <section class="products" id="section2">
       <div class="productContainer">
-        <div class="productItem" ng-repeat="product in originalProducts">
-          <a ng-href="{{product.link}}">
-            <img ng-src="{{product.image}}" alt="{{product.title}}" />
+        <div class="productItem" ng-repeat="product in originalProducts track by $index">
+          <a ng-href="#!/products/kids/originals/{{product.id}}">
+            <img ng-src="{{product.image}}" alt="{{product.name}}" />
             <p class="productSubtitle">Originals KIDS</p>
-            <p class="productTitle">{{product.title}}</p>
-            <p class="productPrice">{{product.price}}</p>
+            <p class="productTitle">{{product.name}}</p>
+            <p class="productPrice">Rp {{product.price | number}}</p>
           </a>
         </div>
+        <div ng-if="originalProducts.length === 0" class="no-products">
+          No products available in this category
+        </div>
+      </div>
+      <div class="arrow arrowRight" ng-click="moveSlide('section2', 1)" ng-show="originalProducts.length > 4">
+        &#10095;
       </div>
     </section>
   </section>
@@ -75,14 +81,20 @@
   <section class="products">
     <section class="products" id="section3">
       <div class="productContainer">
-        <div class="productItem" ng-repeat="product in sportsProducts">
-          <a ng-href="{{product.link}}">
-            <img ng-src="{{product.image}}" alt="{{product.title}}" />
+        <div class="productItem" ng-repeat="product in sportsProducts track by $index">
+          <a ng-href="#!/products/kids/sports/{{product.id}}">
+            <img ng-src="{{product.image}}" alt="{{product.name}}" />
             <p class="productSubtitle">Sports KIDS</p>
-            <p class="productTitle">{{product.title}}</p>
-            <p class="productPrice">{{product.price}}</p>
+            <p class="productTitle">{{product.name}}</p>
+            <p class="productPrice">Rp {{product.price | number}}</p>
           </a>
         </div>
+        <div ng-if="sportsProducts.length === 0" class="no-products">
+          No products available in this category
+        </div>
+      </div>
+      <div class="arrow arrowRight" ng-click="moveSlide('section3', 1)" ng-show="sportsProducts.length > 4">
+        &#10095;
       </div>
     </section>
   </section>
@@ -90,23 +102,27 @@
   <section class="products">
     <section class="products" id="section4">
       <div class="productContainer">
-        <div class="productItem" ng-repeat="product in runningProducts">
-          <a ng-href="{{product.link}}">
-            <img ng-src="{{product.image}}" alt="{{product.title}}" />
+        <div class="productItem" ng-repeat="product in runningProducts track by $index">
+          <a ng-href="#!/products/kids/running/{{product.id}}">
+            <img ng-src="{{product.image}}" alt="{{product.name}}" />
             <p class="productSubtitle">Running KIDS</p>
-            <p class="productTitle">{{product.title}}</p>
-            <p class="productPrice">{{product.price}}</p>
+            <p class="productTitle">{{product.name}}</p>
+            <p class="productPrice">Rp {{product.price | number}}</p>
           </a>
         </div>
+        <div ng-if="runningProducts.length === 0" class="no-products">
+          No products available in this category
+        </div>
+      </div>
+      <div class="arrow arrowRight" ng-click="moveSlide('section4', 1)" ng-show="runningProducts.length > 4">
+        &#10095;
       </div>
     </section>
   </section>
 
   <div class="aboutContent">
     <div class="aboutInfo">
-      <p class="titleContent">
-        GET READY FOR ADVENTURE WITH ADIDAS KIDS' SHOES
-      </p>
+      <p class="titleContent">GET READY FOR ADVENTURE WITH ADIDAS KIDS' SHOES</p>
       <p class="informationContent">
         Get your little ones ready for adventure with Adidas kids' shoes, designed for comfort, style, and fun. Our
         collection features three main themes: Adidas Originals, Sports, and Running Shoes, so you can choose the
@@ -124,7 +140,7 @@
       </p>
     </div>
     <div class="aboutInfo">
-      <p class="titleContent">ADIDAS KIDS'S SHOES: WHERE COMFORT MEETS STYLE</p>
+      <p class="titleContent">ADIDAS KIDS' SHOES: WHERE COMFORT MEETS STYLE</p>
       <p class="informationContent">
         Experience the ultimate comfort and style with Adidas kids' shoes. Our shoes are designed to provide superior
         support and cushioning, while also looking great. Whether your kids are into sports, fashion, or just want a

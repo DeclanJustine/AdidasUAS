@@ -2,6 +2,16 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   const Product = sequelize.define("Product", {
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Image path cannot be empty.",
+        },
+        
+      },
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,

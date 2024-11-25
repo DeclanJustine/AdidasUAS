@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adidas Indonesia - Men's Collection</title>
+  <title>Adidas Indonesia - Women's Collection</title>
   <link rel="stylesheet" href="/frontend/css/menstyle.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
@@ -61,18 +61,25 @@
     <h1 id="originals">ORIGINALS</h1>
     <div class="line"></div>
     <section class="products" id="section2">
-      <div class="arrow arrowLeft" ng-click="moveSlide('section2', -1)">&#10094;</div>
+      <div class="arrow arrowLeft" ng-click="moveSlide('section2', -1)" ng-show="originalProducts.length > 4">
+        &#10094;
+      </div>
       <div class="productContainer">
-        <div class="productItem" ng-repeat="product in originalProducts">
-          <a ng-href="{{product.link}}">
-            <img ng-src="{{product.image}}" alt="{{product.title}}" />
+        <div class="productItem" ng-repeat="product in originalProducts track by $index">
+          <a ng-href="#!/products/women/originals/{{product.id}}">
+            <img ng-src="{{product.image}}" alt="{{product.name}}" />
             <p class="productSubtitle">Originals WOMEN</p>
-            <p class="productTitle">{{product.title}}</p>
-            <p class="productPrice">{{product.price}}</p>
+            <p class="productTitle">{{product.name}}</p>
+            <p class="productPrice">Rp {{product.price | number}}</p>
           </a>
         </div>
+        <div ng-if="originalProducts.length === 0" class="no-products">
+          No products available in this category
+        </div>
       </div>
-      <div class="arrow arrowRight" ng-click="moveSlide('section2', 1)">&#10095;</div>
+      <div class="arrow arrowRight" ng-click="moveSlide('section2', 1)" ng-show="originalProducts.length > 4">
+        &#10095;
+      </div>
     </section>
   </section>
 
@@ -80,18 +87,25 @@
     <h1 id="sports">SPORTS</h1>
     <div class="line"></div>
     <section class="products" id="section3">
-      <div class="arrow arrowLeft" ng-click="moveSlide('section3', -1)">&#10094;</div>
+      <div class="arrow arrowLeft" ng-click="moveSlide('section3', -1)" ng-show="sportsProducts.length > 4">
+        &#10094;
+      </div>
       <div class="productContainer">
-        <div class="productItem" ng-repeat="product in sportsProducts">
-          <a ng-href="{{product.link}}">
-            <img ng-src="{{product.image}}" alt="{{product.title}}" />
+        <div class="productItem" ng-repeat="product in sportsProducts track by $index">
+          <a ng-href="#!/products/women/sports/{{product.id}}">
+            <img ng-src="{{product.image}}" alt="{{product.name}}" />
             <p class="productSubtitle">Sports WOMEN</p>
-            <p class="productTitle">{{product.title}}</p>
-            <p class="productPrice">{{product.price}}</p>
+            <p class="productTitle">{{product.name}}</p>
+            <p class="productPrice">Rp {{product.price | number}}</p>
           </a>
         </div>
+        <div ng-if="sportsProducts.length === 0" class="no-products">
+          No products available in this category
+        </div>
       </div>
-      <div class="arrow arrowRight" ng-click="moveSlide('section3', 1)">&#10095;</div>
+      <div class="arrow arrowRight" ng-click="moveSlide('section3', 1)" ng-show="sportsProducts.length > 4">
+        &#10095;
+      </div>
     </section>
   </section>
 
@@ -99,67 +113,68 @@
     <h1 id="running">RUNNING</h1>
     <div class="line"></div>
     <section class="products" id="section4">
-      <div class="arrow arrowLeft" ng-click="moveSlide('section4', -1)">&#10094;</div>
+      <div class="arrow arrowLeft" ng-click="moveSlide('section4', -1)" ng-show="runningProducts.length > 4">
+        &#10094;
+      </div>
       <div class="productContainer">
-        <div class="productItem" ng-repeat="product in runningProducts">
-          <a ng-href="{{product.link}}">
-            <img ng-src="{{product.image}}" alt="{{product.title}}" />
+        <div class="productItem" ng-repeat="product in runningProducts track by $index">
+          <a ng-href="#!/products/women/running/{{product.id}}">
+            <img ng-src="{{product.image}}" alt="{{product.name}}" />
             <p class="productSubtitle">Running WOMEN</p>
-            <p class="productTitle">{{product.title}}</p>
-            <p class="productPrice">{{product.price}}</p>
+            <p class="productTitle">{{product.name}}</p>
+            <p class="productPrice">Rp {{product.price | number}}</p>
           </a>
         </div>
+        <div ng-if="runningProducts.length === 0" class="no-products">
+          No products available in this category
+        </div>
       </div>
-      <div class="arrow arrowRight" ng-click="moveSlide('section4', 1)">&#10095;</div>
+      <div class="arrow arrowRight" ng-click="moveSlide('section4', 1)" ng-show="runningProducts.length > 4">
+        &#10095;
+      </div>
     </section>
   </section>
 
   <div class="aboutContent">
     <div class="aboutInfo">
-      <p class="titleContent">
-        UNLEASH YOUR STYLE WITH ADIDAS WOMEN'S SHOES
-      </p>
+      <p class="titleContent">UNLEASH YOUR STYLE WITH ADIDAS WOMEN'S SHOES</p>
       <p class="informationContent">
-        Step into the world of Adidas women's shoes, where fashion meets performance. Our collection is designed for the
-        modern woman who demands style, comfort, and quality. From sleek and sporty to chic and sophisticated, our shoes
-        are perfect for any occasion. Whether you're hitting the gym, running errands, or just lounging around, our
-        shoes will keep up with your active lifestyle. Our collection features three main themes: Adidas Originals,
-        Sports, and Running Shoes, so you can choose the perfect pair to match your unique style.
+        Step into the world of Adidas women's shoes, where fashion meets performance. Our collection is designed
+        for the modern woman who demands style, comfort, and quality. From sleek and sporty to chic and
+        sophisticated, our shoes are perfect for any occasion. Whether you're hitting the gym, running errands,
+        or just lounging around, our shoes will keep up with your active lifestyle. Our collection features
+        three main themes: Adidas Originals, Sports, and Running Shoes, so you can choose the perfect pair to
+        match your unique style.
       </p>
     </div>
     <div class="aboutInfo">
       <p class="titleContent">FIND YOUR PERFECT FIT WITH ADIDAS WOMEN'S SHOES</p>
       <p class="informationContent">
-        Discover the perfect shoes to match your unique style with Adidas women's shoes. Our Adidas Originals collection
-        features classic and iconic designs, while our Sports collection is designed for performance and comfort. Our
-        Running Shoes collection is perfect for those who love to run and stay active. With our shoes, you'll be able to
-        take on any challenge and look great doing it. Shop our latest women's shoes at the official Adidas Indonesia
-        online store and experience the comfort, style, and performance that Adidas is known for.
+        Discover the perfect shoes to match your unique style with Adidas women's shoes. Our Adidas Originals
+        collection features classic and iconic designs, while our Sports collection is designed for performance
+        and comfort. Our Running Shoes collection is perfect for those who love to run and stay active. With our
+        shoes, you'll be able to take on any challenge and look great doing it. Shop our latest women's shoes at
+        the official Adidas Indonesia online store and experience the comfort, style, and performance that
+        Adidas is known for.
       </p>
     </div>
     <div class="aboutInfo">
       <p class="titleContent">ADIDAS WOMEN'S SHOES: WHERE COMFORT MEETS STYLE</p>
       <p class="informationContent">
-        Experience the ultimate comfort and style with Adidas women's shoes. Our shoes are designed to provide superior
-        support and cushioning, while also looking great. Whether you're into sports, fashion, or just want a
-        comfortable pair of shoes, our collection has got you covered. Our Adidas Originals collection is perfect for
-        those who want a classic and stylish look, while our Sports collection is designed for performance and comfort.
-        Our Running Shoes collection is perfect for those who love to run and stay active.
+        Experiencejust want a comfortable pair of shoes, our collection has got you covered. Our Adidas Originals
+        collection is perfect for those who want a classic and stylish look, while our Sports collection is designed for
+        performance and comfort. Our Running Shoes collection is ideal for women who love to stay active and on the go.
       </p>
     </div>
-  </div>
 
+  </div>
   <div class="descBottom">
     <div class="row">
-      <div class="flag-container">
-        <img src="/frontend/assets/logo/flagLogo.png" alt="Flag" class="flag">
-        <p class="countryName">
-          ID | Privacy Politics | TERMS & CONDITIONS | COPYRIGHT 2024 ADIDAS INDONESIA
-        </p>
+      <div class="flag-container"> <img src="/frontend/assets/logo/flagLogo.png" alt="Flag" class="flag">
+        <p class="countryName"> ID | Privacy Politics | TERMS & CONDITIONS | COPYRIGHT 2024 ADIDAS INDONESIA </p>
       </div>
     </div>
   </div>
-
 </body>
 
 </html>
