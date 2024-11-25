@@ -42,71 +42,25 @@
       <a href="#!/kids"> <button>KIDS →</button> </a>
     </div>
   </div>
+  <br><br><br>
 
   <div class="productContent">
     <div class="titleContent">Our Best Products</div>
-    <div class="productContainer">
-      <div class="productItem">
-        <a href="/frontend/html/ProductDetail/KidsShoes/KidsRun2.html">
-          <img src="/frontend/assets/kidsshoes/KIDS(RUNNING 2) - Marvel Spiderman.png" alt="Product 1" />
+    <div class="productContainer" ng-if="products.length">
+      <div class="productItem" ng-repeat="product in products">
+        <a ng-href="#!/products/{{product.type}}/{{product.category}}/{{product.id}}">
+          <img ng-src="{{product.image}}" alt="{{product.name}}" />
         </a>
-        <p class="productTitle">ADIDAS RAPIDARUN X MARVEL SPIDERMAN</p>
-        <p class="productPrice">Rp. 1.399.000</p>
-      </div>
-      <div class="productItem">
-        <a href="/frontend/html/ProductDetail/MenShoes/MenRun1.html">
-          <img src="/frontend/assets/menshoes/MAN(RUNNING 1) - Parley.png" alt="Product 2" />
-        </a>
-        <p class="productTitle">ADIDAS ULTRABOOST DNA X PARLEY</p>
-        <p class="productPrice">Rp. 2.492.000</p>
-      </div>
-      <div class="productItem">
-        <a href="/frontend/html/ProductDetail/WomenShoes/WomenSport7.html">
-          <img src="/frontend/assets/womenshoes/WOMAN(SPORTS 7) - Stella McCartney.png" alt="Product 3" />
-        </a>
-        <p class="productTitle">ADIDAS PREDATOR FREAK X STELLA MCCARTNEY</p>
-        <p class="productPrice">Rp. 3.613.000</p>
-      </div>
-      <div class="productItem">
-        <a href="/frontend/html/ProductDetail/WomenShoes/WomenRun1.html">
-          <img src="/frontend/assets/womenshoes/WOMEN(RUNNING 1) - Raf Simons.png" alt="Product 4" />
-        </a>
-        <p class="productTitle">ADIDAS OZWEEGO 3 X RAF SIMONS</p>
-        <p class="productPrice">Rp. 4.653.000</p>
+        <p class="productTitle">{{product.name}}</p>
+        <p class="productPrice">{{product.price | currency : 'Rp. '}}</p>
       </div>
     </div>
-    <div class="productContainer">
-      <div class="productItem">
-        <a href="/frontend/html/ProductDetail/MenShoes/MenRun6.html">
-          <img src="/frontend/assets/menshoes/MAN(RUNNING 6) - Undefeated.png" alt="Product 5" />
-        </a>
-        <p class="productTitle">ADIDAS ULTRABOOST X UNDEFEATED</p>
-        <p class="productPrice">Rp. 6.610.000</p>
-      </div>
-      <div class="productItem">
-        <a href="/frontend/html/ProductDetail/MenShoes/MenSport2.html">
-          <img src="/frontend/assets/menshoes/MAN(SPORT 2) - Prada.png" alt="Product 6" />
-        </a>
-        <p class="productTitle">ADIDAS CRAZYFAST X PRADA</p>
-        <p class="productPrice">Rp. 7.580.000</p>
-      </div>
-      <div class="productItem">
-        <a href="/frontend/html/ProductDetail/MenShoes/MenOri6.html">
-          <img src="/frontend/assets/menshoes/MAN(ORIGINAL 6) - Alexander Wang.png" alt="Product 7" />
-        </a>
-        <p class="productTitle">ADIDAS X ALEXANDER WANG SKATE SUPER</p>
-        <p class="productPrice">Rp. 10.172.000</p>
-      </div>
-      <div class="productItem">
-        <a href="/frontend/html/ProductDetail/WomenShoes/WomenSport1.html">
-          <img src="/frontend/assets/womenshoes/WOMAN(SPORTS 1) - Ivy Park.png" alt="Product 8" />
-        </a>
-        <p class="productTitle">ADIDAS ULTRABOOST OG X IVY PARK</p>
-        <p class="productPrice">Rp. 1.999.000</p>
-      </div>
+    <div class="loading" ng-if="!products.length">
+      <p>Loading products...</p>
     </div>
-  </div>
-  <br /><br /><br />
+  </div>  
+  
+  <br><br><br>
   <div class="descSection">
     <div class="descContent">
       <div class="descContainer">

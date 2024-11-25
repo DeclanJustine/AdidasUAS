@@ -194,6 +194,16 @@ button#buyNow:hover {
     font-size: 1.1rem;
   }
 
+  .navbar {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 40px;
+    right: 0;
+    background-color: rgb(161, 160, 160);
+    width: 35%;
+  }
+
   body {
     overflow-x: hidden;
   }

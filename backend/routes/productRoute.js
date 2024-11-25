@@ -6,5 +6,7 @@ router.post("/products", productController.createProduct);
 
 router.get("/products", productController.getAllProducts);
 router.get("/products/:type/:category/:id", productController.getProduct);
+router.get('/products/random', productController.getRandomProducts);
+
 
 module.exports = router;

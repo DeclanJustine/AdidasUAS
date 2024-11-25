@@ -148,54 +148,51 @@ iframe {
 }
 
 .productContent {
-  margin: auto;
-  margin-top: 80px;
   text-align: center;
-  width: 80%;
-  overflow: hidden;
-  position: relative;
+  margin: 20px auto;
+  padding: 0 20px; 
+  max-width: 1200px; 
 }
 
 .titleContent {
-  text-align: center;
-  font-size: 60px;
+  font-size: 36px;
   font-weight: bold;
-  color: #333;
+  margin-bottom: 30px;
 }
 
 .productContainer {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
 }
 
 .productItem {
-  width: 20%;
-  background-color: rgb(225, 225, 225);
-  padding: 24px;
-  text-align: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #f9f9f9;
 }
 
 .productItem img {
-  width: 100%;
-  background-color: #e6e3db;
-  margin-bottom: 10px;
-  border-radius: 35px;
+  max-width: 75%;
+  border-radius: 5px;
 }
 
 .productTitle {
-  font-weight: 600;
-  margin-bottom: 5px;
-  text-align: start;
   font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0;
 }
 
 .productPrice {
-  color: #333333;
-  text-align: start;
-  font-size: 13px;
+  font-size: 14px;
+  color: #555;
 }
 
+.loading p {
+  font-size: 18px;
+  color: #888;
+}
 .descSection {
   width: 100%;
 }

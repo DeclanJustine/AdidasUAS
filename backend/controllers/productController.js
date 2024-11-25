@@ -1,4 +1,5 @@
 const { Product } = require("../models");
+const sequelize = require("../config/db");
 
 const createProduct = async (req, res) => {
   try {
@@ -70,4 +71,22 @@ const getProduct = async (req, res) => {
   }
 };
 
-module.exports = { createProduct, getAllProducts, getProduct };
+const getRandomProducts = async (req, res) => {
+  try {
+    const products = await Product.findAll({
+      order: sequelize.random(),
+      limit: 8,
+    });
+
+    if (!products || products.length === 0) {
+      return res.status(404).json({ error: "No products found." });
+    }
+
+    res.status(200).json({ message: "Random products retrieved successfully.", products });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error." });
+  }
+};
+
+module.exports = { createProduct, getAllProducts, getProduct , getRandomProducts};
