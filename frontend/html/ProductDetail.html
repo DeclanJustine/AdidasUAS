@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADIDAS X STAN SMITH</title>
+    <link rel="stylesheet" href="/frontend/css/productstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+</head>
+
+<body ng-controller="ProductDetailController">
+
+    <div class="headerSection">
+        <div class="logo-container">
+            <img src="/frontend/assets/logo/adidasLogo.png" alt="Adidas Logo" class="adidasLogo">
+        </div>
+        <i class="fas" ng-class="{'fa-bars': !isMenuActive, 'fa-times': isMenuActive}" ng-click="toggleMenu()"
+            id="menu-icon"></i>
+        <nav class="navbar" ng-class="{'active': isMenuActive}">
+            <a href="#!/home">Home</a>
+            <a href="#!/men">Go to Men's Page</a>
+            <a href="#!/women">Go to Women's Page</a>
+            <a href="#!/kids">Go to Kid's Page</a>
+            <a href="#!/shop">Return to Shop's Page</a>
+        </nav>
+    </div>
+    
+    <div class="product-page" ng-if="!loading">
+        <div ng-if="loading" class="loading">Loading...</div>
+        
+        <div ng-if="error" class="error">{{error}}</div>
+        
+        <div ng-if="!loading && !error">
+            <div class="product-images">
+                <img ng-src="{{product.image}}" alt="{{product.name}}" id="mainImage" class="main-image"
+                    ng-if="product.image">
+            </div>
+    
+            <div class="product-details">
+                <h1 id="productName">{{product.name}}</h1>
+                <p id="productPrice">Rp {{product.price | number}}</p>
+    
+                <div class="product-description">
+                    <p>{{product.description}}</p>
+                </div>
+    
+                <div class="product-size">
+                    <label for="size">Choose Shoes Size:</label>
+                    <select id="size" ng-model="selectedSize">
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                    </select>
+                </div>
+    
+                <button id="buyNow" ng-click="buyNow()" ng-disabled="!selectedSize">Buy Now</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

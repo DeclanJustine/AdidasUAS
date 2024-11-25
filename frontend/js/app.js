@@ -38,10 +38,10 @@ app.config(function($routeProvider) {
             templateUrl: "/frontend/html/KidsPage.html",
             controller: "KidsController"
         })    
-        .when("/menori1", {
-            templateUrl: "/frontend/html/ProductDetail/MenShoes/MenOri1.html",
-            controller: "ProductController"
-        })      
+        .when('/products/:type/:category/:id', {
+            templateUrl: '/frontend/html/ProductDetail.html',
+            controller: 'ProductDetailController'
+        })     
         .otherwise({
             redirectTo: "/"
         });

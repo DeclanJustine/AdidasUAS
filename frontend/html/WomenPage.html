@@ -73,7 +73,7 @@
       </div>
       <div class="productContainer">
         <div class="productItem" ng-repeat="product in originalProducts track by $index">
-          <a ng-href="#!/products/women/originals/{{product.id}}">
+          <a ng-href="#!/products/{{product.type}}/{{product.category}}/{{product.id}}">
             <img ng-src="{{product.image}}" alt="{{product.name}}" />
             <p class="productSubtitle">Originals WOMEN</p>
             <p class="productTitle">{{product.name}}</p>
@@ -99,7 +99,7 @@
       </div>
       <div class="productContainer">
         <div class="productItem" ng-repeat="product in sportsProducts track by $index">
-          <a ng-href="#!/products/women/sports/{{product.id}}">
+          <a ng-href="#!/products/{{product.type}}/{{product.category}}/{{product.id}}">
             <img ng-src="{{product.image}}" alt="{{product.name}}" />
             <p class="productSubtitle">Sports WOMEN</p>
             <p class="productTitle">{{product.name}}</p>
@@ -125,7 +125,7 @@
       </div>
       <div class="productContainer">
         <div class="productItem" ng-repeat="product in runningProducts track by $index">
-          <a ng-href="#!/products/women/running/{{product.id}}">
+          <a ng-href="#!/products/{{product.type}}/{{product.category}}/{{product.id}}">
             <img ng-src="{{product.image}}" alt="{{product.name}}" />
             <p class="productSubtitle">Running WOMEN</p>
             <p class="productTitle">{{product.name}}</p>
