@@ -73,11 +73,22 @@ nav a:hover {
   display: none;
 }
 
-
 #menu-icon {
   display: none;
 }
 
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5%;
+  font-size: 2rem;
+  border-bottom: 2px solid rgb(153, 153, 153);
+}
+
+.profile-icon:hover {
+  transform: scale(1.1);
+}
 
 .content {
   width: 100%;
@@ -119,15 +130,15 @@ iframe {
 }
 
 .men {
-  background-image: url('/frontend/assets/logo/menLogo.png');
+  background-image: url("/frontend/assets/logo/menLogo.png");
 }
 
 .women {
-  background-image: url('/frontend/assets/logo/womenLogo.png');
+  background-image: url("/frontend/assets/logo/womenLogo.png");
 }
 
 .kids {
-  background-image: url('/frontend/assets/logo/kidsLogo.png');
+  background-image: url("/frontend/assets/logo/kidsLogo.png");
 }
 
 .card button {
@@ -150,8 +161,8 @@ iframe {
 .productContent {
   text-align: center;
   margin: 20px auto;
-  padding: 0 20px; 
-  max-width: 1200px; 
+  padding: 0 20px;
+  max-width: 1200px;
 }
 
 .titleContent {
@@ -224,7 +235,6 @@ iframe {
   text-align: justify;
 }
 
-
 .descBottom {
   display: flex;
   background-color: #333333;
@@ -258,7 +268,7 @@ iframe {
   font-weight: 400;
 }
 
-@media (max-width:1850px){
+@media (max-width: 1850px) {
   iframe {
     width: 100%;
     height: 850px;
@@ -379,16 +389,6 @@ iframe {
     align-items: center;
   }
 
-  #menu-icon {
-    display: block;
-    cursor: pointer;
-    position: fixed;
-    font-size: 1.1rem;
-    margin-top: 1px;
-    left: 92%;
-    border-bottom: 1px black;
-  }
-
   .navbar.active {
     display: block;
   }
@@ -464,4 +464,60 @@ iframe {
   .countryName {
     font-size: 10px;
   }
+}
+
+@media (width: 768px) {
+  #menu-icon {
+    display: block;
+    cursor: pointer;
+    position: fixed;
+    font-size: 1.4rem;
+    margin-top: 10px;
+    left: 89%;
+    border-bottom: 1px black;
+  }
+
+  .profile-container {
+    width: 150%;
+    margin-right: -70%;
+    margin-top: -1%;
+    padding: 10px 0;
+    justify-content: center;
+  }
+
+  .profile-icon {
+    top: 7px;
+    font-size: 30px;
+    display: block;
+    text-align: center;
+  }
+}
+
+@media (width: 430px) {
+  #menu-icon {
+    display: block;
+    cursor: pointer;
+    position: fixed;
+    font-size: 1.4rem;
+    margin-top: 14px;
+    left: 85%;
+    border-bottom: 1px black;
+  }
+
+  .profile-container {
+    width: 150%;
+    margin-right: -70%;
+    margin-top: -1%;
+    padding: 10px 0;
+    justify-content: center;
+  }
+
+  .profile-icon {
+    top: 7px;
+    font-size: 30px;
+    display: block;
+    text-align: center;
+  }
+
+  
 }
