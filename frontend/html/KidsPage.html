@@ -31,20 +31,28 @@
       <a href="#!/shop">Return to Shop Page</a>
     </nav>
 
-    <div class="search-page" ng-show="searchInput && searchResults.length > 0">
-      <div class="search-results">
-        <div ng-repeat="result in searchResults" class="search-result-item">
-          <a ng-href="{{result.link}}">
-            <p class="result-subtitle">{{result.subtitle}}</p>
-            <p class="result-title">{{result.title}}</p>
-            <p class="result-price">{{result.price}}</p>
-          </a>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <section class="products">
+  <section class="search-results-container" ng-if="searchInput && searchResults.length > 0">
+      <h1>Search Result</h1>
+      <div class="line"></div>
+      <div class="productContainer">
+          <div class="productItem" ng-repeat="result in searchResults">
+              <a ng-href="{{result.link}}">
+                  <img ng-src="{{result.image}}" alt="{{result.title}}" />
+                  <p class="productSubtitle">{{result.subtitle}}</p>
+                  <p class="productTitle">{{result.title}}</p>
+                  <p class="productPrice">{{result.price}}</p>
+              </a>
+          </div>
+      </div>
+      <div class="no-products" ng-if="searchResults.length === 0">
+          Tidak ada hasil yang sesuai dengan pencarian.
+      </div>
+  </section>
+
+  
+  <section class="products" ng-if="!searchInput || searchResults.length === 0">
     <div class="breadcrumb">
       <span class="backArrow">
         <img src="/frontend/assets/logo/arrow_back.png" alt="Back Arrow" />
@@ -57,7 +65,7 @@
     <div class="line"></div>
   </section>
 
-  <section class="products">
+  <section class="products" ng-if="!searchInput || searchResults.length === 0">
     <section class="products" id="section2">
       <div class="productContainer">
         <div class="productItem" ng-repeat="product in originalProducts track by $index">
@@ -75,7 +83,7 @@
     </section>
   </section>
 
-  <section class="products">
+  <section class="products" ng-if="!searchInput || searchResults.length === 0">
     <section class="products" id="section3">
       <div class="productContainer">
         <div class="productItem" ng-repeat="product in sportsProducts track by $index">
@@ -93,7 +101,7 @@
     </section>
   </section>
 
-  <section class="products">
+  <section class="products" ng-if="!searchInput || searchResults.length === 0">
     <section class="products" id="section4">
       <div class="productContainer">
         <div class="productItem" ng-repeat="product in runningProducts track by $index">
@@ -110,6 +118,7 @@
       </div>
     </section>
   </section>
+</div>
 
   <div class="aboutContent">
     <div class="aboutInfo">

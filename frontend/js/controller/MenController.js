@@ -83,6 +83,7 @@ angular.module("myApp").controller("MenController", function ($scope, $window, $
       product.name.toLowerCase().includes(input)
     ).map(product => ({
       link: `#!/products/men/${product.category}/${product.id}`,
+      image: product.image,
       subtitle: `Men's ${product.category.charAt(0).toUpperCase() + product.category.slice(1)}`,
       title: product.name,
       price: `Rp ${product.price.toLocaleString('id-ID')}`
