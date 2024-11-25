@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs"); 
 
 const createUser = async (req, res) => {
-  const { username, email, password, confirmPassword, firstName, lastName, BOD, gender } = req.body;
+  const { username, email, password, confirmPassword, firstName, lastName, BOD, gender, address } = req.body;
 
   try {
     if (password !== confirmPassword) {
@@ -32,7 +32,8 @@ const createUser = async (req, res) => {
       firstName,
       lastName,
       BOD,
-      gender
+      gender,
+      address
     });
 
     res.status(201).json({ 
@@ -45,6 +46,7 @@ const createUser = async (req, res) => {
         lastName: newUser.lastName, 
         BOD: newUser.BOD, 
         gender: newUser.gender, 
+        address: newUser.address, 
         createdAt: newUser.createdAt 
       } 
     });
@@ -169,7 +171,8 @@ const getUserProfile = async (req, res) => {
       firstName: user.firstName,
       lastName: user.lastName,
       BOD: user.BOD,
-      gender: user.gender
+      gender: user.gender,
+      address: user.address
     });
   } catch (error) {
     console.error("Error retrieving user profile:", error);

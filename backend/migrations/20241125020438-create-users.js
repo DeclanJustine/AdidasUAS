@@ -38,6 +38,10 @@ module.exports = {
         type: Sequelize.ENUM("male", "female", "other"),
         allowNull: false,
       },
+      address: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -63,6 +63,16 @@ module.exports = (sequelize) => {
         },
       },
     },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: {
+          args: [10, 255],
+          msg: "Address must be between 10 and 255 characters if provided.",
+        },
+      },
+    },
   });
 
   User.addHook("beforeCreate", async (user) => {

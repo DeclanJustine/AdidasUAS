@@ -5,7 +5,8 @@ angular.module("myApp").controller("ProfileController", function($scope, $http, 
         firstName: "",
         lastName: "",
         BOD: "",
-        gender: ""
+        gender: "",
+        address: ""
     };
 
     $scope.passwordData = {

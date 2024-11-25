@@ -7,7 +7,8 @@ angular.module('myApp').controller('RegisterController', function($scope, $http,
         firstName: "",
         lastName: "",
         BOD: "",
-        gender: ""
+        gender: "",
+        address: ""
     };
 
     $scope.register = async function() {
@@ -31,7 +32,8 @@ angular.module('myApp').controller('RegisterController', function($scope, $http,
                 firstName: $scope.user.firstName,
                 lastName: $scope.user.lastName,
                 BOD: $scope.user.BOD,
-                gender: $scope.user.gender
+                gender: $scope.user.gender,
+                address: $scope.user.address
             });
 
             if (response.data.message) {
