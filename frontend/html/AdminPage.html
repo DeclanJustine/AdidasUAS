@@ -1,11 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/frontend/css/adminstyle.css">
 </head>
 <body>
-    <h1>Selamat datang di halaman admin!</h1>
+  <div class="dashboard-container" ng-controller="AdminController">
+    <div class="sidebar">
+      <h2>Admin Dashboard</h2>
+      <ul>
+        <li><a href="#">Users</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Orders</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <h1>Users</h1>
+      <div ng-if="users.length === 0">
+        <p>No users found.</p>
+      </div>
+
+      <table ng-if="users.length > 0">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Date of Birth (BOD)</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.BOD }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.address }}</td>
+            <td><button>Edit</button></td>
+            <td><button class="delete-btn" ng-click="deleteUser(user.id)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </body>
 </html>

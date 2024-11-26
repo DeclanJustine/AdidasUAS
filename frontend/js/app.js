@@ -6,46 +6,91 @@ app.config(function($routeProvider) {
             templateUrl: "/frontend/html/Login.html",
             controller: "LoginController"
         })
-        .when("/admin", {
-            templateUrl: "/frontend/html/AdminPage.html",
-            controller: "LoginController"
-        }) 
         .when("/register", {
             templateUrl: "/frontend/html/Register.html",
             controller: "RegisterController"
         })
+        .when("/admin", {
+            templateUrl: "/frontend/html/AdminPage.html",
+            controller: "AdminController",
+            resolve: {
+                loginRequired: function(authService) {
+                    authService.checkLogin();
+                }
+            }
+        })
         .when("/profile", {
             templateUrl: "/frontend/html/Profile.html",
-            controller: "ProfileController"
+            controller: "ProfileController",
+            resolve: {
+                loginRequired: function(authService) {
+                    authService.checkLogin();
+                }
+            }
         })
         .when("/home", {
             templateUrl: "/frontend/html/LandingPage.html",
-            controller: "LandingController"
+            controller: "LandingController",
+            resolve: {
+                loginRequired: function(authService) {
+                    authService.checkLogin();
+                }
+            }
         })
         .when("/about", {
             templateUrl: "/frontend/html/AboutUsPage.html",
-            controller: "AboutController"
+            controller: "AboutController",
+            resolve: {
+                loginRequired: function(authService) {
+                    authService.checkLogin();
+                }
+            }
         })
         .when("/shop", {
             templateUrl: "/frontend/html/ShopPage.html",
-            controller: "ShopController"
-        })       
+            controller: "ShopController",
+            resolve: {
+                loginRequired: function(authService) {
+                    authService.checkLogin();
+                }
+            }
+        })
         .when("/men", {
             templateUrl: "/frontend/html/MenPage.html",
-            controller: "MenController"
-        })    
+            controller: "MenController",
+            resolve: {
+                loginRequired: function(authService) {
+                    authService.checkLogin();
+                }
+            }
+        })
         .when("/women", {
             templateUrl: "/frontend/html/WomenPage.html",
-            controller: "WomenController"
-        })    
+            controller: "WomenController",
+            resolve: {
+                loginRequired: function(authService) {
+                    authService.checkLogin();
+                }
+            }
+        })
         .when("/kids", {
             templateUrl: "/frontend/html/KidsPage.html",
-            controller: "KidsController"
-        })    
+            controller: "KidsController",
+            resolve: {
+                loginRequired: function(authService) {
+                    authService.checkLogin();
+                }
+            }
+        })
         .when('/products/:type/:category/:id', {
             templateUrl: '/frontend/html/ProductDetail.html',
-            controller: 'ProductDetailController'
-        })       
+            controller: 'ProductDetailController',
+            resolve: {
+                loginRequired: function(authService) {
+                    authService.checkLogin();
+                }
+            }
+        })
         .otherwise({
             redirectTo: "/"
         });
