@@ -20,10 +20,8 @@ angular.module("myApp").controller("LoginController", function($scope, $http, $l
                  console.log("Token saved to localStorage", response.data.token);
              }
 
-             // Debug isAdmin value
              console.log("isAdmin:", response.data.isAdmin);
 
-             // Redirect based on isAdmin
              if (response.data.isAdmin === true) {
                  $location.path("/admin");
              } else {
