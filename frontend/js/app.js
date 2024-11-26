@@ -6,6 +6,10 @@ app.config(function($routeProvider) {
             templateUrl: "/frontend/html/Login.html",
             controller: "LoginController"
         })
+        .when("/admin", {
+            templateUrl: "/frontend/html/AdminPage.html",
+            controller: "LoginController"
+        }) 
         .when("/register", {
             templateUrl: "/frontend/html/Register.html",
             controller: "RegisterController"
@@ -41,7 +45,7 @@ app.config(function($routeProvider) {
         .when('/products/:type/:category/:id', {
             templateUrl: '/frontend/html/ProductDetail.html',
             controller: 'ProductDetailController'
-        })     
+        })       
         .otherwise({
             redirectTo: "/"
         });

@@ -112,12 +112,15 @@ const loginUser = async (req, res) => {
 
       console.log('Session started:', req.session.user); 
 
+      const isAdmin = user.isAdmin; 
+      
       res.status(200).json({
           message: "Login Success!",
           id: user.id,
           username: user.username,
           email: user.email,
           token: token,
+          isAdmin: isAdmin,
       });
   } catch (error) {
       console.error("Error while login:", error);
