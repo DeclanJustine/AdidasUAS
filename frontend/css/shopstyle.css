@@ -480,11 +480,7 @@ iframe {
   .countryName {
     font-size: 10px;
   }
-  .profile-container {
-    width: 150%;
-    margin-right: -70%;
-    margin-top: -1%;
-    padding: 10px 0;
+  .profile-container {    
     justify-content: center;
   }
 
@@ -502,7 +498,7 @@ iframe {
     cursor: pointer;
     position: fixed;
     font-size: 1.4rem;
-    margin-top: 12px;
+    margin-top: 10px;
     left: 84%;
     border-bottom: 1px black;
   }
