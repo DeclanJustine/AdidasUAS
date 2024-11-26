@@ -83,7 +83,7 @@ nav a:hover {
   align-items: center;
   width: 5%;
   font-size: 2rem;
-  border-bottom: 2px solid rgb(153, 153, 153);
+  border-bottom: 0px solid rgb(153, 153, 153);
 }
 
 .profile-icon:hover {
@@ -377,12 +377,13 @@ iframe {
   }
 
   #menu-icon {
-    display: block;
+    display: flex;
     cursor: pointer;
     position: fixed;
-    font-size: 1.4rem;
-    margin-top: 10px;
-    left: 90%;
+    font-size: 1.7rem;
+    margin-top: 8.5px;
+    left: 90.5%;
+    width: 2%;
     border-bottom: 1px black;
   }
 
@@ -460,13 +461,13 @@ iframe {
   }
 
   .descContent {
-    padding: 10px;
+    padding: 40px;
   }
 
   .descBottom {
     height: 30px;
     font-size: 10px;
-    width: 97%;
+    width: 106%;
   }
 
   .flagContainer {
@@ -480,7 +481,7 @@ iframe {
   .countryName {
     font-size: 10px;
   }
-  .profile-container {    
+  .profile-container {
     justify-content: center;
   }
 
@@ -490,6 +491,14 @@ iframe {
     display: block;
     text-align: center;
   }
+
+  .profile-container {
+    width: 152%;
+    margin-right: -100%;
+    margin-top: 0.5%;
+    padding: -1px 0;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 431px) {
@@ -497,9 +506,9 @@ iframe {
     display: block;
     cursor: pointer;
     position: fixed;
-    font-size: 1.4rem;
-    margin-top: 10px;
-    left: 84%;
+    font-size: 1.6rem;
+    margin-top: 8px;
+    left: 85.6%;
     border-bottom: 1px black;
   }
 
@@ -507,13 +516,25 @@ iframe {
     left: 90%;
   }
 
+  .profile-container {
+    width: 150%;
+    margin-right: -120%;
+    margin-top: 0.5%;
+    padding: -1px 0;
+    justify-content: right;
+  }
   .profile-icon {
     top: 7px;
     font-size: 30px;
     display: block;
     text-align: center;
   }
-  
+
+
+  .descBottom {
+    width: 120%;
+  }
+
   .productContainer {
     grid-template-columns: 1fr; /* 1 kolom */
   }
