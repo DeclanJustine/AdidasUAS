@@ -19,20 +19,21 @@ angular.module("myApp").controller("AdminController", function($scope, $http) {
     };
     
 
-    $scope.deleteUser = async function(userId) {
+    $scope.deleteAccount = async function(userId) {
         try {
-            const response = await $http.delete(`http://localhost:5000/api/users/${userId}`);
+            const response = await $http.delete(`http://localhost:5000/api/deleteaccount/${userId}`);
+    
             if (response.status === 200) {
+                alert(response.data.message);
                 $scope.getAllUsers();
-                console.log("User deleted successfully.");
             } else {
-                alert("Failed to delete the user.");
+                alert("Failed to delete user account.");
             }
         } catch (error) {
-            console.error("Error deleting user:", error);
-            alert("An error occurred while deleting the user.");
+            console.error("Error deleting account:", error);
+            alert("An error occurred while deleting the account.");
         }
-    };
+    };    
 
     $scope.getAllUsers();
 });
