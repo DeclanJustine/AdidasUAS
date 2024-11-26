@@ -313,6 +313,12 @@ iframe {
   }
 }
 
+@media (max-width: 1024px) {
+  .productContainer {
+    grid-template-columns: repeat(3, 1fr); /* 3 kolom */
+  }
+}
+
 /* Responsif untuk layar di bawah 991px */
 @media (max-width: 991px) {
   nav a {
@@ -370,11 +376,21 @@ iframe {
     border: none;
   }
 
+  #menu-icon {
+    display: block;
+    cursor: pointer;
+    position: fixed;
+    font-size: 1.4rem;
+    margin-top: 10px;
+    left: 90%;
+    border-bottom: 1px black;
+  }
+
   .navbar {
     display: none;
     flex-direction: column;
     position: fixed;
-    top: 20px;
+    top: 40px;
     right: 0;
     background-color: rgb(161, 160, 160);
     width: 25%;
@@ -436,7 +452,7 @@ iframe {
   }
 
   .productContainer {
-    flex-wrap: wrap;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .productItem {
@@ -464,19 +480,6 @@ iframe {
   .countryName {
     font-size: 10px;
   }
-}
-
-@media (width: 768px) {
-  #menu-icon {
-    display: block;
-    cursor: pointer;
-    position: fixed;
-    font-size: 1.4rem;
-    margin-top: 10px;
-    left: 89%;
-    border-bottom: 1px black;
-  }
-
   .profile-container {
     width: 150%;
     margin-right: -70%;
@@ -493,23 +496,19 @@ iframe {
   }
 }
 
-@media (width: 430px) {
+@media (max-width: 431px) {
   #menu-icon {
     display: block;
     cursor: pointer;
     position: fixed;
     font-size: 1.4rem;
-    margin-top: 14px;
-    left: 85%;
+    margin-top: 12px;
+    left: 84%;
     border-bottom: 1px black;
   }
 
   .profile-container {
-    width: 150%;
-    margin-right: -70%;
-    margin-top: -1%;
-    padding: 10px 0;
-    justify-content: center;
+    left: 90%;
   }
 
   .profile-icon {
@@ -518,6 +517,8 @@ iframe {
     display: block;
     text-align: center;
   }
-
   
+  .productContainer {
+    grid-template-columns: 1fr; /* 1 kolom */
+  }
 }
