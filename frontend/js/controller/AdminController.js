@@ -1,7 +1,6 @@
 angular.module("myApp").controller("AdminController", function($scope, $http, $location) {
     $scope.users = [];
 
-    // Function to get all users
     $scope.getAllUsers = async function() {
         try {
             const response = await $http.get("http://localhost:5000/api/users");
@@ -19,7 +18,6 @@ angular.module("myApp").controller("AdminController", function($scope, $http, $l
         }
     };
 
-    // Function to delete a user account
     $scope.deleteAccount = async function(userId) {
         const confirmDelete = window.confirm("Are you sure you want to delete this account?");
         

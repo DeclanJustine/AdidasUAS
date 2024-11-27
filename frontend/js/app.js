@@ -28,6 +28,15 @@ app.config(function($routeProvider) {
                 }
             }
         })
+        .when("/admin/products", {
+            templateUrl: "/frontend/html/AdminPageProduct.html",
+            controller: "AdminProductController",
+            resolve: {
+                loginRequired: function(authService) {
+                    authService.checkLogin();
+                }
+            }
+        })
         .when("/profile", {
             templateUrl: "/frontend/html/Profile.html",
             controller: "ProfileController",

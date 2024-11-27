@@ -40,32 +40,32 @@
 
     table th:first-child,
     table td:first-child {
-      width: 50px;
+      width: 40px;
     }
 
     table th:nth-child(2),
     table td:nth-child(2) {
-      width: 120px;
+      width: 280px;
     }
 
     table th:nth-child(3),
     table td:nth-child(3) {
-      width: 140px;
+      width: 70px;
     }
 
     table th:nth-child(4),
     table td:nth-child(4) {
-      width: 140px;
+      width: 100px;
     }
 
     table th:nth-child(5),
     table td:nth-child(5) {
-      width: 160px;
+      width: 130px;
     }
 
     table th:nth-child(6),
     table td:nth-child(6) {
-      width: 223px;
+      width: 130px;
     }
 
     table th:nth-child(7),
@@ -75,11 +75,6 @@
 
     table th:nth-child(8),
     table td:nth-child(8) {
-      width: 250px;
-    }
-
-    table th:nth-child(9),
-    table td:nth-child(9) {
       width: 100px;
     }
 
@@ -118,7 +113,7 @@
 </head>
 
 <body>
-  <div class="dashboard-container" ng-controller="AdminController">
+  <div class="dashboard-container" ng-controller="AdminProductController">
     <div class="sidebar">
       <h2>Admin Dashboard</h2>
       <ul>
@@ -130,38 +125,34 @@
     </div>
 
     <div class="main-content">
-      <h1>Users</h1>
-      <div ng-if="users.length === 0">
-        <p>No users found.</p>
+      <h1>Products</h1>
+      <div ng-if="products.length === 0">
+        <p>No products found.</p>
       </div>
 
-      <table ng-if="users.length > 0">
+      <table ng-if="products.length > 0">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Username</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Date of Birth (BOD)</th>
-            <th>Gender</th>
-            <th>Address</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Image</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="user in users">
-            <td>{{ user.id }}</td>
-            <td>{{ user.username }}</td>
-            <td>{{ user.firstName }}</td>
-            <td>{{ user.lastName }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.BOD }}</td>
-            <td>{{ user.gender }}</td>
-            <td>{{ user.address }}</td>
-            <td><a href="#!/admin/editUsers/{{ user.id }}" class="edit-link">Edit</a></td>
-            <td><button class="delete-btn" ng-click="deleteAccount(user.id)">Delete</button></td>
+          <tr ng-repeat="product in products">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.type }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.price | currencyRp }}</td>
+            <td><img ng-src="{{ product.image }}" alt="{{ product.name }}" width="100"></td>
+            <td><a href="#!/admin/editProduct/{{ product.id }}" class="edit-link">Edit</a></td>
+            <td><button class="delete-btn" ng-click="deleteProduct(product.id)">Delete</button></td>
           </tr>
         </tbody>
       </table>
