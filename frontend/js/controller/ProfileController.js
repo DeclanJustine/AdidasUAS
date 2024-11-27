@@ -62,7 +62,10 @@ angular.module("myApp").controller("ProfileController", function($scope, $http, 
             if (response.status === 200) {
                 localStorage.removeItem('authToken');
                 localStorage.removeItem('userProfile');  
-                $location.path('/');  
+                $scope.$apply(() => {  
+                    $location.path('/');  
+                    alert("Logout Successsfully");
+                });
                 console.log("Logout Successfully")
             } else {
                 alert("Failed to logout.");
@@ -122,10 +125,12 @@ angular.module("myApp").controller("ProfileController", function($scope, $http, 
                 });
 
                 if (response.status === 200) {
-                    alert("Your account has been deleted successfully.");
                     localStorage.removeItem('authToken');
                     localStorage.removeItem('userProfile');
-                    $location.path('/');  
+                    $scope.$apply(() => {  
+                        $location.path('/');  
+                        alert("Delete Account Successsfully");
+                    });
                 } else {
                     alert("Failed to delete account.");
                 }

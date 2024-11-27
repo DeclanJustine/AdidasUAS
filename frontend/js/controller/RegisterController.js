@@ -37,8 +37,10 @@ angular.module('myApp').controller('RegisterController', function($scope, $http,
             });
 
             if (response.data.message) {
-                $location.path("/"); 
-                alert("Registration Success!");
+                $scope.$apply(() => {
+                    $location.path("/");
+                    alert("Registration Success!");
+                  });
             }
         } catch (error) {
             console.error("Error:", error);
