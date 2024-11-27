@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/frontend/css/adminstyle.css">
+  <style>
+    .main-content {
+      flex-grow: 1;
+      margin-left: 390px;
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: calc(100% - 40px);
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table th,
+    table td {
+      padding: 16px;
+      text-align: left;
+      border: 1px solid #ddd;
+      transition: background-color 0.3s ease;
+    }
+
+    table th {
+      background-color: #f4f4f4;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    table td {
+      font-size: 16px;
+    }
+
+    table th:first-child,
+    table td:first-child {
+      width: 50px;
+    }
+
+    table th:nth-child(2),
+    table td:nth-child(2) {
+      width: 120px;
+    }
+
+    table th:nth-child(3),
+    table td:nth-child(3) {
+      width: 140px;
+    }
+
+    table th:nth-child(4),
+    table td:nth-child(4) {
+      width: 140px;
+    }
+
+    table th:nth-child(5),
+    table td:nth-child(5) {
+      width: 160px;
+    }
+
+    table th:nth-child(6),
+    table td:nth-child(6) {
+      width: 223px;
+    }
+
+    table th:nth-child(7),
+    table td:nth-child(7) {
+      width: 100px;
+    }
+
+    table th:nth-child(8),
+    table td:nth-child(8) {
+      width: 250px;
+    }
+
+    table th:nth-child(9),
+    table td:nth-child(9) {
+      width: 100px;
+    }
+
+    table tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    .delete-btn {
+      background-color: #ff4d4d;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .delete-btn:hover {
+      background-color: #cc0000;
+    }
+
+    .edit-link {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .edit-link:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dashboard-container" ng-controller="AdminController">
+    <div class="sidebar">
+      <h2>Admin Dashboard</h2>
+      <ul>
+        <li><a href="#!/admin/users">Users</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Orders</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <h1>Users</h1>
+      <div ng-if="users.length === 0">
+        <p>No users found.</p>
+      </div>
+
+      <table ng-if="users.length > 0">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Date of Birth (BOD)</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.BOD }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.address }}</td>
+            <td><a href="#!/admin/editUsers/{{ user.id }}" class="edit-link">Edit</a></td>
+            <td><button class="delete-btn" ng-click="deleteAccount(user.id)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

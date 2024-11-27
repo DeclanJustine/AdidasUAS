@@ -183,6 +183,61 @@ const getUserProfile = async (req, res) => {
   }
 };
 
+const getUserById = async (req, res) => {
+  try {
+    const userId = req.params.id;  
+    const user = await User.findByPk(userId);  
+    
+    if (!user) {
+      return res.status(404).json({ error: "User not found." });
+    }
+
+    res.status(200).json({
+      username: user.username,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      BOD: user.BOD,
+      gender: user.gender,
+      address: user.address,
+      isAdmin: user.isAdmin,
+    });
+  } catch (error) {
+    console.error("Error retrieving user by ID:", error);
+    res.status(500).json({ error: "An error occurred while retrieving the user." });
+  }
+};
+
+const editUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { username, email, firstName, lastName, BOD, gender, address, isAdmin } = req.body;
+
+    const user = await User.findByPk(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found." });
+    }
+
+    user.username = username || user.username;
+    user.email = email || user.email;
+    user.firstName = firstName || user.firstName;
+    user.lastName = lastName || user.lastName;
+    user.BOD = BOD || user.BOD;
+    user.gender = gender || user.gender;
+    user.address = address || user.address;
+    user.isAdmin = isAdmin !== undefined ? isAdmin : user.isAdmin;  
+
+    await user.save();
+
+    res.status(200).json({ message: "User updated successfully.", user });
+  } catch (error) {
+    console.error("Error updating user:", error);
+    res.status(500).json({ error: "An error occurred while updating the user.", details: error.message });
+  }
+};
+
+
 const changePassword = async (req, res) => {
   const { recentPassword, newPassword, confirmNewPassword } = req.body;
 
@@ -266,4 +321,4 @@ const deleteAccountbyId = async (req, res) => {
 
 
 
-module.exports = { createUser, getAllUsers, loginUser, getUserProfile, logoutUser, checkSession, changePassword, deleteAccount, deleteAccountbyId};
+module.exports = { createUser, getAllUsers, loginUser, getUserProfile, logoutUser, checkSession, changePassword, deleteAccount, deleteAccountbyId, editUser, getUserById};

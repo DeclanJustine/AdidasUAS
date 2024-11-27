@@ -10,9 +10,18 @@ app.config(function($routeProvider) {
             templateUrl: "/frontend/html/Register.html",
             controller: "RegisterController"
         })
-        .when("/admin", {
-            templateUrl: "/frontend/html/AdminPage.html",
+        .when("/admin/users", {
+            templateUrl: "/frontend/html/AdminPageUser.html",
             controller: "AdminController",
+            resolve: {
+                loginRequired: function(authService) {
+                    authService.checkLogin();
+                }
+            }
+        })
+        .when("/admin/editUsers/:userId", {
+            templateUrl: "/frontend/html/AdminEditUser.html",
+            controller: "EditUserController",
             resolve: {
                 loginRequired: function(authService) {
                     authService.checkLogin();

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+    <link rel="stylesheet" href="/frontend/css/adminstyle.css">
+    <style>
+        .main-content {
+            margin-left: 400px;
+            padding: 20px;
+            width: calc(100% - 400px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        table th,
+        table td {
+            padding: 16px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        table td {
+            font-size: 16px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="checkbox"] {
+            padding: 8px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: none;
+            width: 100%;
+            height: 60px;
+            font-size: 18px;
+        }
+
+        button.update-btn {
+            margin: 20px 0;
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        button.update-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container" ng-controller="EditUserController">
+        <div class="sidebar">
+            <h2>Admin Dashboard</h2>
+            <ul>
+                <li><a href="#!/admin/users">Users</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Orders</a></li>
+            </ul>
+        </div>
+    
+        <div class="main-content">
+            <h1>Edit User</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Current Value</th>
+                        <th>New Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Username</td>
+                        <td>{{ user.username }}</td>
+                        <td><input type="text" ng-model="newValues.username" placeholder="New Username"></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{ user.email }}</td>
+                        <td><input type="email" ng-model="newValues.email" placeholder="New Email"></td>
+                    </tr>
+                    <tr>
+                        <td>First Name</td>
+                        <td>{{ user.firstName }}</td>
+                        <td><input type="text" ng-model="newValues.firstName" placeholder="New First Name"></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td>{{ user.lastName }}</td>
+                        <td><input type="text" ng-model="newValues.lastName" placeholder="New Last Name"></td>
+                    </tr>
+                    <tr>
+                        <td>Date of Birth</td>
+                        <td>{{ user.BOD }}</td>
+                        <td><input type="date" ng-model="newValues.BOD"></td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>{{ user.gender }}</td>
+                        <td>
+                            <select ng-model="newValues.gender">
+                                <option value="">Select Gender</option>
+                                <option value="male">male</option>
+                                <option value="female">female</option>
+                                <option value="other">other</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>{{ user.address }}</td>
+                        <td><input type="text" ng-model="newValues.address" placeholder="New Address"></td>
+                    </tr>
+                    <tr>
+                        <td>Admin</td>
+                        <td>{{ user.isAdmin ? 'True' : 'False' }}</td>
+                        <td><input type="checkbox" ng-model="newValues.isAdmin"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="update-btn" ng-click="updateUser()">Update User</button>
+        </div>
+    </div>    
+</body>
+
+</html>

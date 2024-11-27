@@ -5,11 +5,6 @@
     font-family: Arial, sans-serif;
   }
   
-  body {
-    display: flex;
-    min-height: 100vh;
-  }
-  
   .dashboard-container {
     display: flex;
     width: 100%;
@@ -59,103 +54,9 @@
     padding: 10px;
     display: block;
   }
-  
-  .main-content {
-    flex-grow: 1;
-    margin-left: 390px; /* Increased margin to account for the sidebar width */
-    padding: 20px;
-    overflow-x: auto; /* Allows horizontal scrolling if content overflows */
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
   }
-  
-  table {
-    width: calc(100% - 40px);
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  table th, table td {
-    padding: 16px;
-    text-align: left;
-    border: 1px solid #ddd;
-    transition: background-color 0.3s ease;
-  }
-  
-  table th {
-    background-color: #f4f4f4;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  table td {
-    font-size: 16px;
-  }
-  
-  table th:first-child,
-  table td:first-child {
-    width: 50px; 
-  }
-  
-  table th:nth-child(2),
-  table td:nth-child(2) {
-    width: 120px;
-  }
-  table th:nth-child(3),
-  table td:nth-child(3) {
-    width: 140px; 
-  }
-  
-  table th:nth-child(4),
-  table td:nth-child(4) {
-    width: 140px; 
-  }
-  
-  table th:nth-child(5),
-  table td:nth-child(5) {
-    width: 160px; 
-  }
-  
-  table th:nth-child(6),
-  table td:nth-child(6) {
-    width: 223px; 
-  }
-  
-  table th:nth-child(7),
-  table td:nth-child(7) {
-    width: 100px; 
-  }
-  
-  table th:nth-child(8),
-  table td:nth-child(8) {
-    width: 250px; /* Edit column width */
-  }
-  
-  table th:nth-child(9),
-  table td:nth-child(9) {
-    width: 100px; /* Delete column width */
-  }
-  
-  table tr:hover {
-    background-color: #f9f9f9;
-  }
-  
-  button {
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  .delete-btn {
-    background-color: #ff4d4d;
-  }
-  
-  .delete-btn:hover {
-    background-color: #cc0000;
-  }
-  

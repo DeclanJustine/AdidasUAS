@@ -32,7 +32,7 @@ angular.module("myApp").controller("LoginController", function($scope, $http, $l
 
                if (response.data.isAdmin === true) {
                    console.log("Admin user, redirecting to Admin Page");
-                   $location.path("/admin");
+                   $location.path("/admin/users");
                } else {
                    console.log("Regular user, redirecting to Home Page");
                    $location.path("/home");
