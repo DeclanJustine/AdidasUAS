@@ -89,4 +89,22 @@ const getRandomProducts = async (req, res) => {
   }
 };
 
-module.exports = { createProduct, getAllProducts, getProduct , getRandomProducts};
+const deleteProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const product = await Product.findOne({ where: { id } });
+    if (!product) {
+      return res.status(404).json({ error: "Product not found." });
+    }
+
+    await Product.destroy({ where: { id } });
+
+    res.status(200).json({ message: "Product deleted successfully." });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error." });
+  }
+};
+
+module.exports = { createProduct, getAllProducts, getProduct, getRandomProducts, deleteProduct };

@@ -8,5 +8,6 @@ router.get("/products", productController.getAllProducts);
 router.get("/products/:type/:category/:id", productController.getProduct);
 router.get('/products/random', productController.getRandomProducts);
 
+router.delete("/products/:id", productController.deleteProduct);
 
 module.exports = router;

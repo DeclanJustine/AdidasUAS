@@ -37,6 +37,15 @@ app.config(function($routeProvider) {
                 }
             }
         })
+        .when("/admin/products/create", {
+            templateUrl: "/frontend/html/CreateProduct.html",
+            controller: "AdminCreateProductController",
+            resolve: {
+                loginRequired: function(authService) {
+                    authService.checkLogin();
+                }
+            }
+        })
         .when("/profile", {
             templateUrl: "/frontend/html/Profile.html",
             controller: "ProfileController",
