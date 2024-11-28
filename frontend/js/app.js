@@ -46,6 +46,15 @@ app.config(function($routeProvider) {
                 }
             }
         })
+        .when("/admin/products/edit/:productId", {
+            templateUrl: "/frontend/html/EditProduct.html",
+            controller: "AdminEditProductController",
+            resolve: {
+                loginRequired: function(authService) {
+                    authService.checkLogin();
+                }
+            }
+        })
         .when("/profile", {
             templateUrl: "/frontend/html/Profile.html",
             controller: "ProfileController",

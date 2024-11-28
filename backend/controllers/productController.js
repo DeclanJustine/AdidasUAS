@@ -107,4 +107,49 @@ const deleteProduct = async (req, res) => {
   }
 };
 
-module.exports = { createProduct, getAllProducts, getProduct, getRandomProducts, deleteProduct };
+const editProduct = (req, res) => {
+  const productId = req.params.productId;
+  const { name, price, description, type, category } = req.body;
+  
+  console.log("Uploaded file:", req.file);  // Log the uploaded file
+
+  // If no file is uploaded, fallback to the existing image
+  let image = req.file ? `http://localhost:5000/assets/products/${req.file.filename}` : req.body.image;
+
+  // Log the final image path
+  console.log("Image path:", image);
+
+  // Proceed with the update if all fields are valid
+  Product.update(
+      { name, price, description, type, category, image },
+      { where: { id: productId } }
+  )
+  .then(updatedProduct => {
+      res.status(200).json({ product: updatedProduct });
+  })
+  .catch(err => {
+      console.error("Error updating product:", err);  // Log the error for debugging
+      res.status(500).json({ error: "Failed to update product" });
+  });
+};
+
+
+
+const getProductById = async (req, res) => {
+  try {
+    const { productId } = req.params;
+
+    const product = await Product.findByPk(productId);
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found." });
+    }
+
+    res.status(200).json({ message: "Product retrieved successfully.", product });
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    res.status(500).json({ error: "Internal server error." });
+  }
+};
+
+module.exports = { createProduct, getAllProducts, getProduct, getRandomProducts, deleteProduct, editProduct, getProductById};

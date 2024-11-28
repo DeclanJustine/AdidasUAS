@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="/frontend/css/adminstyle.css">
+    <style>
+        .main-content {
+            margin-left: 400px;
+            padding: 20px;
+            width: calc(100% - 400px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        table th,
+        table td {
+            padding: 16px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        table td {
+            font-size: 16px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="file"],
+        textarea,
+        select {
+            padding: 8px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: none;
+            height: 60px;
+        }
+
+        button.update-btn {
+            margin: 20px 0;
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        button.update-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar" ng-controller="AdminController">
+            <h2>Admin Dashboard</h2>
+            <ul>
+                <li><a href="#!/admin/users">Users</a></li>
+                <li><a href="#!/admin/products">Products</a></li>
+                <li><a href="#">Orders</a></li>
+            </ul>
+            <button class="logout-btn" ng-click="logout()">Logout</button>
+        </div>
+
+        <div class="main-content" ng-controller="AdminEditProductController">
+            <h1>Edit Product</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Current Value</th>
+                        <th>New Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Image</td>
+                        <td>
+                            <img ng-src="{{ product.image }}" alt="Product Image" style="width: 100px; height: auto;">
+                        </td>
+                        <td>
+                            <input type="file" accept="image/*" 
+                                   onchange="angular.element(this).scope().handleFileSelect(this.files)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ product.name }}</td>
+                        <td><input type="text" ng-model="newValues.name" placeholder="New Product Name"></td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td>{{ product.price }}</td>
+                        <td><input type="number" ng-model="newValues.price" placeholder="New Price"></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>{{ product.description }}</td>
+                        <td><textarea ng-model="newValues.description" placeholder="New Description"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>{{ product.type }}</td>
+                        <td>
+                            <select ng-model="newValues.type">
+                                <option value="">Select Type</option>
+                                <option value="men">Men</option>
+                                <option value="women">Women</option>
+                                <option value="kids">Kids</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Category</td>
+                        <td>{{ product.category }}</td>
+                        <td>
+                            <select ng-model="newValues.category">
+                                <option value="">Select Category</option>
+                                <option value="originals">Originals</option>
+                                <option value="sports">Sports</option>
+                                <option value="running">Running</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="update-btn" ng-click="updateProduct()">Update Product</button>
+        </div>
+    </div>
+</body>
+
+</html>
