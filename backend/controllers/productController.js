@@ -3,10 +3,18 @@ const sequelize = require("../config/db");
 
 const createProduct = async (req, res) => {
   try {
-    const { image, name, price, description, type, category } = req.body;
+    const { name, price, description, type, category } = req.body;
 
-    if (!image || !name || !price || !type || !description || !category) {
+    if (!name || !price || !type || !description || !category) {
       return res.status(400).json({ error: "Missing required fields." });
+    }
+
+    const image = req.file 
+      ? `http://localhost:5000/assets/products/${req.file.filename}` 
+      : null;
+
+    if (!image) {
+      return res.status(400).json({ error: "Image is required." });
     }
 
     const product = await Product.create({
@@ -20,10 +28,11 @@ const createProduct = async (req, res) => {
 
     res.status(201).json({ message: "Product created successfully.", product });
   } catch (error) {
-    console.error(error);
+    console.error("Error creating product:", error);
     res.status(500).json({ error: "Internal server error." });
   }
 };
+
 
 const getAllProducts = async (req, res) => {
   try {
@@ -111,15 +120,12 @@ const editProduct = (req, res) => {
   const productId = req.params.productId;
   const { name, price, description, type, category } = req.body;
   
-  console.log("Uploaded file:", req.file);  // Log the uploaded file
+  console.log("Uploaded file:", req.file);  
 
-  // If no file is uploaded, fallback to the existing image
   let image = req.file ? `http://localhost:5000/assets/products/${req.file.filename}` : req.body.image;
 
-  // Log the final image path
   console.log("Image path:", image);
 
-  // Proceed with the update if all fields are valid
   Product.update(
       { name, price, description, type, category, image },
       { where: { id: productId } }
@@ -128,7 +134,7 @@ const editProduct = (req, res) => {
       res.status(200).json({ product: updatedProduct });
   })
   .catch(err => {
-      console.error("Error updating product:", err);  // Log the error for debugging
+      console.error("Error updating product:", err); 
       res.status(500).json({ error: "Failed to update product" });
   });
 };

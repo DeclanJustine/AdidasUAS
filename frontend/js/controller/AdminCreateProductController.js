@@ -1,20 +1,20 @@
 angular.module("myApp").controller("AdminCreateProductController", function($scope, $http, $location) {
     $scope.product = {
-        image: '',
+        imageFile: null, // Simpan file asli, bukan hanya URL
         name: '',
         price: '',
         description: '',
         type: '',
         category: ''
     };
-    
+
     $scope.submitted = false;
 
     $scope.handleFileSelect = function(files) {
         if (files.length > 0) {
             const file = files[0];
             $scope.$apply(function() {
-                $scope.product.image = 'http://localhost:5000/assets/products/' + file.name;
+                $scope.product.imageFile = file; 
             });
         }
     };
@@ -22,27 +22,27 @@ angular.module("myApp").controller("AdminCreateProductController", function($sco
     $scope.createProduct = function() {
         $scope.submitted = true;
 
-        if (!$scope.createProductForm.$valid || !$scope.product.image) {
-            alert('Please fill in all required fields correctly.');
+        if (!$scope.createProductForm.$valid || !$scope.product.imageFile) {
+            alert('Please fill in all required fields correctly and select an image.');
             return;
         }
 
-        const productData = {
-            image: $scope.product.image,
-            name: $scope.product.name,
-            price: parseFloat($scope.product.price),
-            description: $scope.product.description,
-            type: $scope.product.type,
-            category: $scope.product.category
-        };
+        const formData = new FormData();
+        formData.append("image", $scope.product.imageFile);
+        formData.append("name", $scope.product.name);
+        formData.append("price", parseFloat($scope.product.price));
+        formData.append("description", $scope.product.description);
+        formData.append("type", $scope.product.type);
+        formData.append("category", $scope.product.category);
 
         $http({
             method: 'POST',
             url: 'http://localhost:5000/api/products',
-            data: productData,
+            data: formData,
             headers: {
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': undefined 
+            },
+            transformRequest: angular.identity 
         })
         .then(function(response) {
             console.log('Success:', response);

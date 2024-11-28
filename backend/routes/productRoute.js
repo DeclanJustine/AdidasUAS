@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const productController = require('../controllers/productController');
-// Pastikan pathnya benar menuju file handleData.js
 const upload = require('../middlewares/handleData');
 
 router.post('/products', upload.single('image'), productController.createProduct);
