@@ -8,4 +8,5 @@ angular.module("myApp").service("authService", function($http, $location) {
             $location.path('/');  
         }
     };
+    //tes
 });
