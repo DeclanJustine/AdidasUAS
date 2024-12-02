@@ -33,6 +33,48 @@ const createProduct = async (req, res) => {
   }
 };
 
+const createAllProduct = async (req, res) => {
+  try {
+    // Pastikan body request ada
+    if (!req.body) {
+      return res.status(400).json({
+        success: false,
+        message: "Request body is missing.",
+      });
+    }
+
+    const { image, name, price, description, type, category } = req.body;
+
+    // Validasi data yang diperlukan
+    if (!image || !name || !price || !type || !category) {
+      return res.status(400).json({
+        success: false,
+        message: "All required fields (image, name, price, type, category) must be provided.",
+      });
+    }
+
+    const newProduct = await Product.create({
+      image,
+      name,
+      price,
+      description,
+      type,
+      category,
+    });
+
+    return res.status(201).json({
+      success: true,
+      message: "Product created successfully.",
+      data: newProduct,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: error.message,
+      errors: error.errors ? error.errors.map(err => err.message) : [],
+    });
+  }
+};
 
 const getAllProducts = async (req, res) => {
   try {
@@ -158,4 +200,4 @@ const getProductById = async (req, res) => {
   }
 };
 
-module.exports = { createProduct, getAllProducts, getProduct, getRandomProducts, deleteProduct, editProduct, getProductById};
+module.exports = { createProduct, getAllProducts, getProduct, getRandomProducts, deleteProduct, editProduct, getProductById, createAllProduct};

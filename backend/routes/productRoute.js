@@ -4,6 +4,7 @@ const productController = require('../controllers/productController');
 const upload = require('../middlewares/handleData');
 
 router.post('/products', upload.single('image'), productController.createProduct);
+router.post('/products/create', productController.createAllProduct);
 
 router.get("/products", productController.getAllProducts);
 router.get("/products/:type/:category/:id", productController.getProduct);
