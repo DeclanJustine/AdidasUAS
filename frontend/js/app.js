@@ -14,8 +14,8 @@ app.config(function($routeProvider) {
             templateUrl: "/frontend/html/AdminPageUser.html",
             controller: "AdminController",
             resolve: {
-                loginRequired: function(authService) {
-                    authService.checkLogin();
+                adminRequired: function(authService) {
+                    return authService.checkAdminAccess();
                 }
             }
         })
@@ -23,8 +23,8 @@ app.config(function($routeProvider) {
             templateUrl: "/frontend/html/AdminEditUser.html",
             controller: "EditUserController",
             resolve: {
-                loginRequired: function(authService) {
-                    authService.checkLogin();
+                adminRequired: function(authService) {
+                    return authService.checkAdminAccess();
                 }
             }
         })
@@ -32,8 +32,8 @@ app.config(function($routeProvider) {
             templateUrl: "/frontend/html/AdminPageProduct.html",
             controller: "AdminProductController",
             resolve: {
-                loginRequired: function(authService) {
-                    authService.checkLogin();
+                adminRequired: function(authService) {
+                    return authService.checkAdminAccess();
                 }
             }
         })
@@ -41,8 +41,8 @@ app.config(function($routeProvider) {
             templateUrl: "/frontend/html/CreateProduct.html",
             controller: "AdminCreateProductController",
             resolve: {
-                loginRequired: function(authService) {
-                    authService.checkLogin();
+                adminRequired: function(authService) {
+                    return authService.checkAdminAccess();
                 }
             }
         })
@@ -50,17 +50,18 @@ app.config(function($routeProvider) {
             templateUrl: "/frontend/html/EditProduct.html",
             controller: "AdminEditProductController",
             resolve: {
-                loginRequired: function(authService) {
-                    authService.checkLogin();
+                adminRequired: function(authService) {
+                    return authService.checkAdminAccess();
                 }
             }
         })
+        // Non-admin routes just need login check
         .when("/profile", {
             templateUrl: "/frontend/html/Profile.html",
             controller: "ProfileController",
             resolve: {
                 loginRequired: function(authService) {
-                    authService.checkLogin();
+                    return authService.checkLogin();
                 }
             }
         })
@@ -69,7 +70,7 @@ app.config(function($routeProvider) {
             controller: "LandingController",
             resolve: {
                 loginRequired: function(authService) {
-                    authService.checkLogin();
+                    return authService.checkLogin();
                 }
             }
         })
@@ -78,7 +79,7 @@ app.config(function($routeProvider) {
             controller: "AboutController",
             resolve: {
                 loginRequired: function(authService) {
-                    authService.checkLogin();
+                    return authService.checkLogin();
                 }
             }
         })
@@ -87,7 +88,7 @@ app.config(function($routeProvider) {
             controller: "ShopController",
             resolve: {
                 loginRequired: function(authService) {
-                    authService.checkLogin();
+                    return authService.checkLogin();
                 }
             }
         })
@@ -96,7 +97,7 @@ app.config(function($routeProvider) {
             controller: "MenController",
             resolve: {
                 loginRequired: function(authService) {
-                    authService.checkLogin();
+                    return authService.checkLogin();
                 }
             }
         })
@@ -105,7 +106,7 @@ app.config(function($routeProvider) {
             controller: "WomenController",
             resolve: {
                 loginRequired: function(authService) {
-                    authService.checkLogin();
+                    return authService.checkLogin();
                 }
             }
         })
@@ -114,7 +115,7 @@ app.config(function($routeProvider) {
             controller: "KidsController",
             resolve: {
                 loginRequired: function(authService) {
-                    authService.checkLogin();
+                    return authService.checkLogin();
                 }
             }
         })
@@ -123,7 +124,7 @@ app.config(function($routeProvider) {
             controller: 'ProductDetailController',
             resolve: {
                 loginRequired: function(authService) {
-                    authService.checkLogin();
+                    return authService.checkLogin();
                 }
             }
         })
