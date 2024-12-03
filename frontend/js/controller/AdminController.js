@@ -28,7 +28,7 @@ angular
         return;
       }
 
-      // Create a copy of users to sort
+      
       let filteredUsers = [...$scope.users];
 
       switch ($scope.filterOptions.type) {
@@ -51,7 +51,7 @@ angular
 
     $scope.clearFilter = function () {
       $scope.filterOptions.type = "";
-      $scope.getAllUsers(); // Reload original data
+      $scope.getAllUsers(); 
     };
 
     $scope.deleteAccount = async function (userId) {
