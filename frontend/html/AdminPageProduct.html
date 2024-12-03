@@ -146,12 +146,15 @@
     <div class="main-content">
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <h1>Products</h1>
-        <button class="create-btn" ng-click="createProduct()"><a href="#!/admin/products/create" style="text-decoration: none; color: white;">Create Product</a></button>
+        <button class="create-btn" ng-click="createProduct()">
+          <a href="#!/admin/products/create" style="text-decoration: none; color: white;">Create Product</a>
+        </button>
       </div>
+    
       <div ng-if="products.length === 0">
         <p>No products found.</p>
       </div>
-
+    
       <table ng-if="products.length > 0">
         <thead>
           <tr>
@@ -166,7 +169,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="product in products">
+          <tr ng-repeat="product in getPaginatedProducts()">
             <td>{{ product.id }}</td>
             <td>{{ product.name }}</td>
             <td>{{ product.type }}</td>
@@ -178,7 +181,13 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    
+      <div class="pagination" ng-if="products.length > itemsPerPage">
+        <button ng-click="previousPage()" ng-disabled="currentPage === 1">Previous</button>
+        <span>Page {{ currentPage }} of {{ totalPages() }}</span>
+        <button ng-click="nextPage()" ng-disabled="currentPage === totalPages()">Next</button>
+      </div>
+    </div>    
   </div>
 </body>
 

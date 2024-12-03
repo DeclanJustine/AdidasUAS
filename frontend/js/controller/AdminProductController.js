@@ -1,7 +1,9 @@
 angular.module("myApp").controller("AdminProductController", function($scope, $http, $location) {
     $scope.products = [];
+    $scope.currentPage = 1;
+    $scope.itemsPerPage = 10; // Jumlah produk per halaman
 
-    $scope.getAllProducts = async function() {
+    $scope.getAllProducts = async function () {
         try {
             const response = await $http.get("http://localhost:5000/api/products");
 
@@ -15,6 +17,28 @@ angular.module("myApp").controller("AdminProductController", function($scope, $h
         } catch (error) {
             console.error("Error retrieving products:", error);
             alert("An error occurred while retrieving products data.");
+        }
+    };
+
+    $scope.totalPages = function () {
+        return Math.ceil($scope.products.length / $scope.itemsPerPage);
+    };
+
+    $scope.getPaginatedProducts = function () {
+        const startIndex = ($scope.currentPage - 1) * $scope.itemsPerPage;
+        const endIndex = startIndex + $scope.itemsPerPage;
+        return $scope.products.slice(startIndex, endIndex);
+    };
+
+    $scope.previousPage = function () {
+        if ($scope.currentPage > 1) {
+            $scope.currentPage--;
+        }
+    };
+
+    $scope.nextPage = function () {
+        if ($scope.currentPage < $scope.totalPages()) {
+            $scope.currentPage++;
         }
     };
 
