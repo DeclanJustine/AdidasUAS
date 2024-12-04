@@ -1,229 +1,271 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/frontend/css/adminstyle.css" />
+    <style>
+      .main-content {
+        flex-grow: 1;
+        margin-left: 390px;
+        padding: 20px;
+        overflow-x: auto;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="/frontend/css/adminstyle.css">
-  <style>
-    .main-content {
-      flex-grow: 1;
-      margin-left: 390px;
-      padding: 20px;
-      overflow-x: auto;
-    }
+      table {
+        width: calc(100% - 40px);
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
 
-    table {
-      width: calc(100% - 40px);
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
+      table th,
+      table td {
+        padding: 16px;
+        text-align: left;
+        border: 1px solid #ddd;
+        transition: background-color 0.3s ease;
+      }
 
-    table th,
-    table td {
-      padding: 16px;
-      text-align: left;
-      border: 1px solid #ddd;
-      transition: background-color 0.3s ease;
-    }
+      table th {
+        background-color: #f4f4f4;
+        font-size: 18px;
+        font-weight: bold;
+      }
 
-    table th {
-      background-color: #f4f4f4;
-      font-size: 18px;
-      font-weight: bold;
-    }
+      table td {
+        font-size: 16px;
+      }
 
-    table td {
-      font-size: 16px;
-    }
+      table th:first-child,
+      table td:first-child {
+        width: 50px;
+      }
 
-    table th:first-child,
-    table td:first-child {
-      width: 50px;
-    }
+      table th:nth-child(2),
+      table td:nth-child(2) {
+        width: 60px;
+      }
 
-    table th:nth-child(2),
-    table td:nth-child(2) {
-      width: 60px;
-    }
+      table th:nth-child(3),
+      table td:nth-child(3) {
+        width: 450px;
+      }
 
-    table th:nth-child(3),
-    table td:nth-child(3) {
-      width: 450px;
-    }
+      table th:nth-child(4),
+      table td:nth-child(4) {
+        width: 200px;
+      }
 
-    table th:nth-child(4),
-    table td:nth-child(4) {
-      width: 200px;
-    }
+      table th:nth-child(5),
+      table td:nth-child(5) {
+        width: 200px;
+      }
 
-    table th:nth-child(5),
-    table td:nth-child(5) {
-      width: 200px;
-    }
+      table th:nth-child(6),
+      table td:nth-child(6) {
+        width: 80px;
+      }
 
-    table th:nth-child(6),
-    table td:nth-child(6) {
-      width: 80px;
-    }
+      table th:nth-child(6),
+      table td:nth-child(6) {
+        width: 80px;
+      }
 
-    table th:nth-child(6),
-    table td:nth-child(6) {
-      width: 80px;
-    }
+      table tr:hover {
+        background-color: #f9f9f9;
+      }
 
-    table tr:hover {
-      background-color: #f9f9f9;
-    }
+      .delete-btn {
+        background-color: #ff4d4d;
+        color: white;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
 
-    .delete-btn {
-      background-color: #ff4d4d;
-      color: white;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+      .delete-btn:hover {
+        background-color: #cc0000;
+      }
 
-    .delete-btn:hover {
-      background-color: #cc0000;
-    }
+      .edit-link {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        text-align: center;
+      }
 
-    .edit-link {
-      display: inline-block;
-      padding: 5px 10px;
-      background-color: #007bff;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      text-align: center;
-    }
+      .edit-link:hover {
+        background-color: #0056b3;
+      }
 
-    .edit-link:hover {
-      background-color: #0056b3;
-    }
+      .orders-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        position: relative;
+        max-width: calc(100% - 40px);
+      }
 
-    .orders-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      position: relative;
-      max-width: calc(100% - 40px);
-    }
+      .filter-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 10px;
+        margin-right: 40px;
+        margin-top: 20px;
+        position: relative;
+      }
 
-    .filter-button {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
+      .filter-toggle {
+        padding: 8px 16px;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
 
-    .filter-button:hover {
-      background-color: #0056b3;
-    }
+      .filter-toggle:hover {
+        background-color: rgb(18, 70, 223);
+      }
 
-    .filter-dropdown {
-      position: absolute;
-      right: 0;
-      top: calc(100% + 5px);
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-      display: none;
-    }
+      .filter-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: white;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 250px;
+      }
 
-    .filter-dropdown.show {
-      display: block;
-    }
+      .filter-dropdown select,
+      .filter-dropdown input,
+      .filter-dropdown button {
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+      }
 
-    .filter-dropdown ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+      .filter-dropdown button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
 
-    .filter-dropdown li {
-      padding: 10px 20px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+      .filter-dropdown button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
 
-    .filter-dropdown li:hover {
-      background-color: #f4f4f4;
-    }
-  </style>
-</head>
+  <body>
+    <div class="dashboard-container" ng-controller="AdminController">
+      <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <ul>
+          <li><a href="#!/admin/users">Users</a></li>
+          <li><a href="#!/admin/products">Products</a></li>
+          <li><a href="#!/admin/orders">Orders</a></li>
+        </ul>
+        <button class="logout-btn" ng-click="logout()">Logout</button>
+      </div>
 
-<body>
-  <div class="dashboard-container" ng-controller="AdminController">
-    <div class="sidebar">
-      <h2>Admin Dashboard</h2>
-      <ul>
-        <li><a href="#!/admin/users">Users</a></li>
-        <li><a href="#!/admin/products">Products</a></li>
-        <li><a href="#!/admin/orders">Orders</a></li>
-      </ul>
-      <button class="logout-btn" ng-click="logout()">Logout</button>
-    </div>
+      <div class="main-content" ng-controller="AdminOrderController">
+        <div class="orders-header">
+          <h1>Orders</h1>
+          <div style="position: relative; margin-left: auto">
+            <!-- Filter Section -->
 
-    <div class="main-content" ng-controller="AdminOrderController">
-      <div class="orders-header">
-        <h1>Orders</h1>
-        <div style="position: relative; margin-left: auto;">
-          <button class="filter-button" ng-click="toggleFilterDropdown()">Filter</button>
-          <div class="filter-dropdown" ng-class="{'show': isFilterDropdownOpen}">
-            <ul>
-              <li ng-click="setSortOrder('idAsc')">Order ID Ascending</li>
-              <li ng-click="setSortOrder('idDesc')">Order ID Descending</li>
-              <li ng-click="setSortOrder('userAsc')">User ID Ascending</li>
-              <li ng-click="setSortOrder('userDesc')">User ID Descending</li>
-              <li ng-click="setSortOrder('priceLowHigh')">Price: Low to High</li>
-              <li ng-click="setSortOrder('priceHighLow')">Price: High to Low</li>
-            </ul>
+            <div class="filter-container">
+              <button
+                class="filter-toggle"
+                ng-click="isFilterDropdownOpen = !isFilterDropdownOpen"
+              >
+                Filter Orders
+              </button>
+              <div class="filter-dropdown" ng-show="isFilterDropdownOpen">
+                <select ng-model="filterOptions.type">
+                  <option value="">Select Sort Order</option>
+                  <option value="id_Desc"> Order ID (Descending)</option>
+                  <option value="id_Asc"> Order ID (Ascending)</option>
+                  <option value="userDesc">
+                     User ID (Descending)
+                  </option>
+                  <option value="userAsc">
+                     User ID (Ascending)
+                  </option>
+                  <option value="priceLowHigh">Price: Low to High</option>
+                  <option value="priceHighLow">Price: High to Low</option>
+                </select>
+                <button ng-click="applyFilter()">Apply Filter</button>
+                <button ng-click="clearFilter()">Clear Filter</button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>User ID</th>
-            <th>Product Name</th>
-            <th>Product Image</th>
-            <th>Product Price</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="order in getPaginatedOrders()">
-            <td>{{ order.id }}</td>
-            <td>{{ order.userId }}</td>
-            <td>{{ order.productName }}</td>
-            <td><img ng-src="{{ order.productImage }}" alt="{{ order.productName }}" width="100"></td>
-            <td>{{ order.productPrice | currencyRp }}</td>
-            <td>
-              <button class="delete-btn" ng-click="deleteOrder(order.id)">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User ID</th>
+              <th>Product Name</th>
+              <th>Product Image</th>
+              <th>Product Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="order in getPaginatedOrders()">
+              <td>{{ order.id }}</td>
+              <td>{{ order.userId }}</td>
+              <td>{{ order.productName }}</td>
+              <td>
+                <img
+                  ng-src="{{ order.productImage }}"
+                  alt="{{ order.productName }}"
+                  width="100"
+                />
+              </td>
+              <td>{{ order.productPrice | currencyRp }}</td>
+              <td>
+                <button class="delete-btn" ng-click="deleteOrder(order.id)">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-      <div class="pagination">
-        <button ng-disabled="currentPage === 1" ng-click="previousPage()">Previous</button>
-        <span>Page {{ currentPage }} of {{ totalPages() }}</span>
-        <button ng-disabled="currentPage === totalPages()" ng-click="nextPage()">Next</button>
+        <div class="pagination">
+          <button ng-disabled="currentPage === 1" ng-click="previousPage()">
+            Previous
+          </button>
+          <span>Page {{ currentPage }} of {{ totalPages() }}</span>
+          <button
+            ng-disabled="currentPage === totalPages()"
+            ng-click="nextPage()"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>
