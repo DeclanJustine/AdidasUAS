@@ -42,10 +42,15 @@
                     <p>Date of Birth: <span>{{ userProfile.BOD }}</span></p>
                     <p>Gender: <span>{{ userProfile.gender }}</span></p>
                     <p>Address: <span>{{ userProfile.address }}</span></p>
+                    
+                    <div class="order-history">
+                        <i class="fas fa-history" ng-click="goToOrderHistory()"></i>
+                        <span ng-click="goToOrderHistory()">View Purchase History</span>
+                    </div>                   
+
                     <button class="logout-button" ng-click="logout()">Logout</button>
                 </div>
                 
-
                 <div class="right-section">
                     <form ng-submit="changePassword()">
                         <label for="recent-password">Recent Password</label>

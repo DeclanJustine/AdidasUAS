@@ -64,6 +64,15 @@ app.config(function($routeProvider) {
                 }
             }
         })
+        .when('/profile/history', {
+            templateUrl: './html/OrderHistory.html',
+            controller: 'OrderHistoryController',
+            resolve: {
+                loginRequired: function(authService) {
+                    authService.checkLogin();
+                }
+            }
+        })
         .when("/home", {
             templateUrl: "/frontend/html/LandingPage.html",
             controller: "LandingController",
