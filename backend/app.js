@@ -6,6 +6,7 @@ const userRoutes = require("./routes/userRoute");
 const productRoutes = require("./routes/productRoute");
 const session = require("express-session");
 const path = require("path");
+const orderRoutes = require('./routes/orderRoute');
 
 dotenv.config();  
 
@@ -36,6 +37,7 @@ app.use((req, res, next) => {
 
 app.use("/api", userRoutes); 
 app.use("/api", productRoutes);
+app.use("/api", orderRoutes);
 app.use("/assets", express.static(path.join(__dirname, "../frontend/assets")));
 
 app.get("/", (req, res) => {
