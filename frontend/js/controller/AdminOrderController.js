@@ -1,9 +1,9 @@
-angular.module("myApp").controller("AdminOrderController", function($scope, $http, $location) {
+angular.module("myApp").controller("AdminOrderController", function ($scope, $http, $location) {
     $scope.orders = [];
     $scope.currentPage = 1;
-    $scope.itemsPerPage = 5; 
+    $scope.itemsPerPage = 6;
 
-    $scope.getAllOrders = async function() {
+    $scope.getAllOrders = async function () {
         try {
             const response = await $http.get("http://localhost:5000/api/orders");
 
@@ -20,32 +20,32 @@ angular.module("myApp").controller("AdminOrderController", function($scope, $htt
         }
     };
 
-    $scope.totalPages = function() {
+    $scope.totalPages = function () {
         return Math.ceil($scope.orders.length / $scope.itemsPerPage);
     };
 
-    $scope.getPaginatedOrders = function() {
+    $scope.getPaginatedOrders = function () {
         const startIndex = ($scope.currentPage - 1) * $scope.itemsPerPage;
         const endIndex = startIndex + $scope.itemsPerPage;
         return $scope.orders.slice(startIndex, endIndex);
     };
 
-    $scope.previousPage = function() {
+    $scope.previousPage = function () {
         if ($scope.currentPage > 1) {
             $scope.currentPage--;
         }
     };
 
-    $scope.nextPage = function() {
+    $scope.nextPage = function () {
         if ($scope.currentPage < $scope.totalPages()) {
             $scope.currentPage++;
         }
     };
 
-    $scope.deleteOrder = async function(orderId) {
+    $scope.deleteOrder = async function (orderId) {
         const confirmation = confirm("Are you sure you want to delete this order?");
         if (!confirmation) {
-            return; 
+            return;
         }
 
         try {
@@ -54,8 +54,8 @@ angular.module("myApp").controller("AdminOrderController", function($scope, $htt
             if (response.status === 200) {
                 $scope.orders = $scope.orders.filter(order => order.id !== orderId);
                 console.log("Order deleted successfully");
-                $scope.$apply(() => {  
-                    $location.path('/admin/orders');  
+                $scope.$apply(() => {
+                    $location.path('/admin/orders');
                     alert("Order deleted successfully.");
                 });
             } else {
@@ -67,6 +67,35 @@ angular.module("myApp").controller("AdminOrderController", function($scope, $htt
         }
     };
 
-    // Initialize the orders
+    $scope.sortOrder = 'asc';
+
+    $scope.sortOrders = function () {
+        if ($scope.sortOrder === 'idAsc') {
+            $scope.orders.sort((a, b) => a.id - b.id);
+        } else if ($scope.sortOrder === 'idDesc') {
+            $scope.orders.sort((a, b) => b.id - a.id);
+        } else if ($scope.sortOrder === 'userAsc') {
+            $scope.orders.sort((a, b) => a.userId - b.userId);
+        } else if ($scope.sortOrder === 'userDesc') {
+            $scope.orders.sort((a, b) => b.userId - a.userId);
+        } else if ($scope.sortOrder === 'priceLowHigh') {
+            $scope.orders.sort((a, b) => a.productPrice - b.productPrice);
+        } else if ($scope.sortOrder === 'priceHighLow') {
+            $scope.orders.sort((a, b) => b.productPrice - a.productPrice);
+        }
+    };
+
+    $scope.isFilterDropdownOpen = false;
+
+    $scope.toggleFilterDropdown = function () {
+        $scope.isFilterDropdownOpen = !$scope.isFilterDropdownOpen;
+    };
+
+    $scope.setSortOrder = function (order) {
+        $scope.sortOrder = order;
+        $scope.sortOrders();
+        $scope.isFilterDropdownOpen = false;
+    };
+
     $scope.getAllOrders();
 });

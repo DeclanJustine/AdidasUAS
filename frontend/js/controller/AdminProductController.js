@@ -1,7 +1,7 @@
 angular.module("myApp").controller("AdminProductController", function($scope, $http, $location) {
     $scope.products = [];
     $scope.currentPage = 1;
-    $scope.itemsPerPage = 10; // Jumlah produk per halaman
+    $scope.itemsPerPage = 6; 
 
     $scope.getAllProducts = async function () {
         try {
