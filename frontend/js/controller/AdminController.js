@@ -13,9 +13,10 @@ angular
     $scope.getAllUsers = async function () {
       try {
         const response = await $http.get("http://localhost:5000/api/users");
-
+        
         if (response.status === 200) {
           $scope.users = response.data;
+          $scope.filteredUsers = [...$scope.users];
           $scope.updatePagination();
           console.log("Users retrieved successfully:", $scope.users);
           $scope.$apply();
@@ -27,6 +28,7 @@ angular
         alert("An error occurred while retrieving user data.");
       }
     };
+   
 
     // Filter data pengguna
     $scope.applyFilter = function () {
