@@ -182,7 +182,7 @@
           <p>No users found.</p>
         </div>
 
-        <table ng-if="filteredUsers.length > 0">
+        <table ng-if="displayedUsers.length > 0">
           <thead>
             <tr>
               <th>ID</th>
@@ -198,7 +198,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="user in filteredUsers">
+            <tr ng-repeat="user in displayedUsers">
               <td>{{ user.id }}</td>
               <td>{{ user.username }}</td>
               <td>{{ user.firstName }}</td>
@@ -208,9 +208,7 @@
               <td>{{ user.gender }}</td>
               <td>{{ user.address }}</td>
               <td>
-                <a href="#!/admin/editUsers/{{ user.id }}" class="edit-link"
-                  >Edit</a
-                >
+                <a href="#!/admin/editUsers/{{ user.id }}" class="edit-link">Edit</a>
               </td>
               <td>
                 <button class="delete-btn" ng-click="deleteAccount(user.id)">
@@ -221,7 +219,6 @@
           </tbody>
         </table>
 
-        <!-- Pagination -->
         <div class="pagination">
           <button ng-click="previousPage()" ng-disabled="currentPage === 1">
             Previous
@@ -229,7 +226,7 @@
           <span>Page {{ currentPage }} of {{ totalPages() }}</span>
           <button
             ng-click="nextPage()"
-            ng-disabled="currentPage === Math.ceil(users.length / itemsPerPage)"
+            ng-disabled="currentPage === Math.ceil(filteredUsers.length / itemsPerPage)"
           >
             Next
           </button>
