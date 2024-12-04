@@ -132,7 +132,7 @@
         display: flex;
         justify-content: flex-end;
         margin-bottom: 20px;
-        margin-right: -780px;
+        margin-right: -760px;
         margin-top: 20px;
         position: relative;
       }
@@ -217,22 +217,19 @@
               class="filter-toggle"
               ng-click="isFilterDropdownOpen = !isFilterDropdownOpen"
             >
-              Filter Users
+              Filter Products
             </button>
             <div class="filter-dropdown" ng-show="isFilterDropdownOpen">
               <select ng-model="filterOptions.type">
                 <option value="">Select Filter Type</option>
                 <option value="id-descending">Filter by ID (Descending)</option>
-                <option value="type_mkw">Filter by Type (M-K-W)</option>
-                <option value="type_wmk">Filter by Type (W-M-K)</option>
-                <option value="type_wkm">Filter by Type (W-K-M)</option>
-                <option value="type_kmw">Filter by Type (K-M-W)</option>
-                <option value="type_kwm">Filter by Type (K-W-M)</option>
-                <option value="category_ors">Filter by Category (O-R-S)</option>
-                <option value="category_sor">Filter by Category (S-O-R)</option>
-                <option value="category_sro">Filter by Category (S-R-O)</option>
-                <option value="category_ros">Filter by Category (R-O-S)</option>
-                <option value="category_rso">Filter by Category (R-S-O)</option>
+                <option value="id-Ascending">Filter by ID (Ascending)</option>
+                <option value="type_men">Filter by Type (Men)</option>
+                <option value="type_women">Filter by Type (Women)</option>
+                <option value="type_kids">Filter by Type (Kids)</option>
+                <option value="category_originals">Filter by Category (Originals)</option>
+                <option value="category_sports">Filter by Category (Sports)</option>
+                <option value="category_running">Filter by Category (Running)</option>
                 <option value="price_LH">
                   Filter by Price (Low - High)
                 </option>

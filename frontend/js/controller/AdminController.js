@@ -28,22 +28,34 @@ angular
         return;
       }
 
-      
       let filteredUsers = [...$scope.users];
 
       switch ($scope.filterOptions.type) {
         case "id_desc":
           filteredUsers.sort((a, b) => b.id - a.id);
           break;
+        case "id_asc":
+          filteredUsers.sort((a, b) => a.id - b.id);
+          break;
+
         case "username_desc":
           filteredUsers.sort((a, b) => b.username.localeCompare(a.username));
           break;
-        case "gender_m-f":
-          filteredUsers.sort((a, b) => b.gender.localeCompare(a.gender));
+        case "username_asc":
+          filteredUsers.sort((a, b) => a.username.localeCompare(b.username));
           break;
-        case "gender_f-m":
-          filteredUsers.sort((a, b) => a.gender.localeCompare(b.gender));
+
+        case "gender_m":
+          filteredUsers = filteredUsers.filter(
+            (users) => users.gender === "male"
+          );
           break;
+
+          case "gender_f":
+            filteredUsers = filteredUsers.filter(
+              (users) => users.gender === "female"
+            );
+            break;
       }
 
       $scope.users = filteredUsers;
@@ -51,7 +63,7 @@ angular
 
     $scope.clearFilter = function () {
       $scope.filterOptions.type = "";
-      $scope.getAllUsers(); 
+      $scope.getAllUsers();
     };
 
     $scope.deleteAccount = async function (userId) {

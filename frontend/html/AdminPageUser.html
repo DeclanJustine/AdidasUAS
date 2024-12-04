@@ -203,14 +203,18 @@
             <select ng-model="filterOptions.type">
               <option value="">Select Filter Type</option>
               <option value="id_desc">Filter by ID (Descending)</option>
+              <option value="id_asc">Filter by ID (Ascending)</option>
               <option value="username_desc">
                 Filter by Username (Descending)
               </option>
-              <option value="gender_m-f">
-                Filter by Gender (Male - Female)
+              <option value="username_asc">
+                Filter by Username (Ascending)
               </option>
-              <option value="gender_f-m">
-                Filter by Gender (Female - Male)
+              <option value="gender_m">
+                Filter by Gender (Male)
+              </option>
+              <option value="gender_f">
+                Filter by Gender (Female)
               </option>
             </select>
             <button ng-click="applyFilter()">Apply Filter</button>
