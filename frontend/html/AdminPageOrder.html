@@ -45,42 +45,31 @@
 
     table th:nth-child(2),
     table td:nth-child(2) {
-      width: 120px;
+      width: 60px;
     }
 
     table th:nth-child(3),
     table td:nth-child(3) {
-      width: 140px;
+      width: 450px;
     }
 
     table th:nth-child(4),
     table td:nth-child(4) {
-      width: 140px;
+      width: 200px;
     }
 
     table th:nth-child(5),
     table td:nth-child(5) {
-      width: 160px;
+      width: 200px;
     }
 
     table th:nth-child(6),
     table td:nth-child(6) {
-      width: 223px;
+      width: 80px;
     }
-
-    table th:nth-child(7),
-    table td:nth-child(7) {
-      width: 100px;
-    }
-
-    table th:nth-child(8),
-    table td:nth-child(8) {
-      width: 250px;
-    }
-
-    table th:nth-child(9),
-    table td:nth-child(9) {
-      width: 100px;
+    table th:nth-child(6),
+    table td:nth-child(6) {
+      width: 80px;
     }
 
     table tr:hover {
@@ -129,50 +118,39 @@
       <button class="logout-btn" ng-click="logout()">Logout</button>
     </div>
 
-    <div class="main-content">
-      <h1>Users</h1>
-      <div ng-if="filteredUsers.length === 0">
-        <p>No users found.</p>
-      </div>
-    
-      <table ng-if="filteredUsers.length > 0">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Date of Birth (BOD)</th>
-            <th>Gender</th>
-            <th>Address</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="user in filteredUsers">
-            <td>{{ user.id }}</td>
-            <td>{{ user.username }}</td>
-            <td>{{ user.firstName }}</td>
-            <td>{{ user.lastName }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.BOD }}</td>
-            <td>{{ user.gender }}</td>
-            <td>{{ user.address }}</td>
-            <td><a href="#!/admin/editUsers/{{ user.id }}" class="edit-link">Edit</a></td>
-            <td><button class="delete-btn" ng-click="deleteAccount(user.id)">Delete</button></td>
-          </tr>
-        </tbody>
-      </table>
-  
-      <div class="pagination">
-        <button ng-click="previousPage()" ng-disabled="currentPage === 1">Previous</button>
-        <span>Page {{ currentPage }} of {{ totalPages() }}</span>
-        <button ng-click="nextPage()" ng-disabled="currentPage === Math.ceil(users.length / itemsPerPage)">Next</button>
-      </div>
-    </div>
-    
+    <div class="main-content" ng-controller="AdminOrderController">
+        <h1>Orders</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User ID</th>
+              <th>Product Name</th>
+              <th>Product Image</th>
+              <th>Product Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="order in getPaginatedOrders()">
+              <td>{{ order.id }}</td>
+              <td>{{ order.userId }}</td>
+              <td>{{ order.productName }}</td>
+              <td><img ng-src="{{ order.productImage }}" alt="{{ order.productName }}" width="100"></td>
+              <td>{{ order.productPrice | currencyRp }}</td>
+              <td>
+                <button class="delete-btn" ng-click="deleteOrder(order.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      
+        <div class="pagination">
+          <button ng-disabled="currentPage === 1" ng-click="previousPage()">Previous</button>
+          <span>Page {{ currentPage }} of {{ totalPages() }}</span>
+          <button ng-disabled="currentPage === totalPages()" ng-click="nextPage()">Next</button>
+        </div>
+      </div>     
   </div>
 </body>
 

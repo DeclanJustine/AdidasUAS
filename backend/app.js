@@ -4,9 +4,9 @@ const cors = require("cors");
 const sequelize = require("./config/db");
 const userRoutes = require("./routes/userRoute");
 const productRoutes = require("./routes/productRoute");
+const orderRoutes = require('./routes/orderRoute');
 const session = require("express-session");
 const path = require("path");
-const orderRoutes = require('./routes/orderRoute');
 
 dotenv.config();  
 
