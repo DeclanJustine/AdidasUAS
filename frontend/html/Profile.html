@@ -32,7 +32,13 @@
 
     <div class="info">
         <div class="main-container">
-            <h1>Profile Information</h1>
+            <div class="header-section">
+                <h1>Profile Information</h1>
+                <div class="order-history">
+                    <i class="fas fa-history" ng-click="goToOrderHistory()"></i>
+                    <span ng-click="goToOrderHistory()">View Purchase History</span>
+                </div>   
+            </div>
             <div class="container">
                 <div class="left-section">
                     <p>Username: <span>{{ userProfile.username }}</span></p>
@@ -42,10 +48,10 @@
                     <p>Date of Birth: <span>{{ userProfile.BOD }}</span></p>
                     <p>Gender: <span>{{ userProfile.gender }}</span></p>
                     <p>Address: <span>{{ userProfile.address }}</span></p>
+
                     <button class="logout-button" ng-click="logout()">Logout</button>
                 </div>
                 
-
                 <div class="right-section">
                     <form ng-submit="changePassword()">
                         <label for="recent-password">Recent Password</label>

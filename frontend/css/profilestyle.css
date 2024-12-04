@@ -111,6 +111,47 @@ nav {
     gap: 20px;
 }
 
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-section h1 {
+    font-size: 24px;
+}
+
+.header-section .order-history {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: -10px;
+}
+
+.header-section .order-history i {
+    font-size: 20px;
+    color: #007BFF;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.header-section .order-history i:hover {
+    color: #0056b3;
+    transform: scale(1.1);
+}
+
+.header-section .order-history span {
+    color: #007BFF;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.header-section .order-history span:hover {
+    color: #0056b3;
+}
+
+
 p {
     font-size: 17px;
 }
@@ -183,6 +224,7 @@ p {
     color: white;
     width: 30%;
     font-weight: bold;
+    margin-top: 5px;
 }
 
 .logout-button:hover {

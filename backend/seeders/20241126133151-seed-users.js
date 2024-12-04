@@ -22,7 +22,7 @@ module.exports = {
     };
 
     const users = [];
-    for (let i = 1; i <= 20; i++) {
+    for (let i = 1; i <= 100; i++) {
       const gender = faker.helpers.arrayElement(["male", "female"]);
       const firstName = faker.name.firstName(gender === "male" ? "male" : "female");
       const lastName = faker.name.lastName();
@@ -33,7 +33,7 @@ module.exports = {
         password: await bcrypt.hash("Password123!", salt),
         firstName: firstName,
         lastName: lastName,
-        BOD: faker.date.birthdate({ min: 17, max: 60, mode: "age" }).toISOString().split("T")[0], 
+        BOD: faker.date.birthdate({ min: 12, max: 60, mode: "age" }).toISOString().split("T")[0], 
         gender: gender,
         address: faker.address.streetAddress(),
         isAdmin: false,

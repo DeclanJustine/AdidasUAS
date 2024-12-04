@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e5e5e5;
+    color: #333;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 2px solid rgb(153, 153, 153);;
+}
+
+.page-title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #2f2f2f;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.back-button {
+    margin-left: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 20px;
+}
+
+.back-button:hover {
+    background-color: rgb(153, 153, 153);
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: rgb(153, 153, 153);
+    
+    color: #fff;
+}
+
+thead th {
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+}
+
+thead th:nth-child(3) {
+    text-align: center;
+}
+
+tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody td img {
+    max-width: 60px;
+    border-radius: 5px;
+    display: block;
+    margin: 0;
+}
+
+tbody td:first-child {
+    text-align: left;
+}
+
+tbody td:nth-child(2) {
+    width: 50%;
+}
+
+tbody td:nth-child(3) {
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+.empty-state {
+    text-align: center;
+    font-size: 16px;
+    color: #6c757d;
+    margin: 20px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f1f1f1;
+    color: #333;
+    border-top: 1px solid #ddd;
+    margin-top: auto;
+}

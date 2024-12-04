@@ -4,6 +4,7 @@ const cors = require("cors");
 const sequelize = require("./config/db");
 const userRoutes = require("./routes/userRoute");
 const productRoutes = require("./routes/productRoute");
+const orderRoutes = require('./routes/orderRoute');
 const session = require("express-session");
 const path = require("path");
 
@@ -36,6 +37,7 @@ app.use((req, res, next) => {
 
 app.use("/api", userRoutes); 
 app.use("/api", productRoutes);
+app.use("/api", orderRoutes);
 app.use("/assets", express.static(path.join(__dirname, "../frontend/assets")));
 
 app.get("/", (req, res) => {

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <link rel="stylesheet" href="/frontend/css/orderHistory.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="OrderHistoryController">
+    <div class="page-container">
+        <header class="header-container">
+            <button class="back-button" ng-click="goBack()"> Back</button>
+            <h1 class="page-title">Order History</h1>
+        </header>
+        <main>
+            <div ng-if="errorMessage" class="error-message">
+                <p>{{errorMessage}}</p>
+            </div>
+
+            <div ng-if="orders.length > 0">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="order in orders">
+                            <td>
+                                <img ng-src="{{order.productImage}}" alt="{{order.productName}}" width="80">
+                            </td>
+                            <td>{{order.productName}}</td>
+                            <td>Rp {{order.productPrice | number}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div ng-if="orders.length === 0 && !errorMessage" class="empty-state">
+                <p>No orders found. Start shopping now!</p>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Adidas Online Store</p>
+    </footer>
+</body>
+
+</html>

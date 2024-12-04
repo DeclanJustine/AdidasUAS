@@ -116,7 +116,7 @@ angular.module("myApp").controller("ProfileController", function($scope, $http, 
     };
     
     $scope.deleteAccount = async function() {
-        if (confirm("Are you sure you want to delete your account? This action cannot be undo.")) {
+        if (confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
             try {
                 const response = await $http.delete("http://localhost:5000/api/deleteaccount", {
                     headers: {
@@ -129,7 +129,7 @@ angular.module("myApp").controller("ProfileController", function($scope, $http, 
                     localStorage.removeItem('userProfile');
                     $scope.$apply(() => {  
                         $location.path('/');  
-                        alert("Delete Account Successsfully");
+                        alert("Delete Account Successfully");
                     });
                 } else {
                     alert("Failed to delete account.");
@@ -143,6 +143,10 @@ angular.module("myApp").controller("ProfileController", function($scope, $http, 
 
     $scope.toggleMenu = function() {
         $scope.isMenuActive = !$scope.isMenuActive;
+    };
+
+    $scope.goToOrderHistory = function() {
+        $location.path("/profile/history");
     };
 
     $scope.getUserProfile();

@@ -49,7 +49,7 @@
     
                 <div class="product-size">
                     <label for="size">Choose Shoes Size:</label>
-                    <select id="size" ng-model="selectedSize">
+                    <select id="size">
                         <option value="36">36</option>
                         <option value="37">37</option>
                         <option value="38">38</option>
@@ -60,7 +60,7 @@
                     </select>
                 </div>
     
-                <button id="buyNow" ng-click="buyNow()" ng-disabled="!selectedSize">Buy Now</button>
+                <button id="buyNow" ng-click="buyNow()">Buy Now</button>
             </div>
         </div>
     </div>

@@ -37,6 +37,15 @@ app.config(function($routeProvider) {
                 }
             }
         })
+        .when("/admin/orders", {
+            templateUrl: "/frontend/html/AdminPageOrder.html",
+            controller: "AdminOrderController",
+            resolve: {
+                adminRequired: function(authService) {
+                    return authService.checkAdminAccess();
+                }
+            }
+        })
         .when("/admin/products/create", {
             templateUrl: "/frontend/html/CreateProduct.html",
             controller: "AdminCreateProductController",
@@ -59,6 +68,15 @@ app.config(function($routeProvider) {
         .when("/profile", {
             templateUrl: "/frontend/html/Profile.html",
             controller: "ProfileController",
+            resolve: {
+                loginRequired: function(authService) {
+                    return authService.checkLogin();
+                }
+            }
+        })
+        .when('/profile/history', {
+            templateUrl: './html/OrderHistory.html',
+            controller: 'OrderHistoryController',
             resolve: {
                 loginRequired: function(authService) {
                     return authService.checkLogin();

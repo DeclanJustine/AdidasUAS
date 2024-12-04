@@ -37,51 +37,6 @@
         font-size: 16px;
       }
 
-      table th:first-child,
-      table td:first-child {
-        width: 50px;
-      }
-
-      table th:nth-child(2),
-      table td:nth-child(2) {
-        width: 120px;
-      }
-
-      table th:nth-child(3),
-      table td:nth-child(3) {
-        width: 140px;
-      }
-
-      table th:nth-child(4),
-      table td:nth-child(4) {
-        width: 140px;
-      }
-
-      table th:nth-child(5),
-      table td:nth-child(5) {
-        width: 160px;
-      }
-
-      table th:nth-child(6),
-      table td:nth-child(6) {
-        width: 223px;
-      }
-
-      table th:nth-child(7),
-      table td:nth-child(7) {
-        width: 100px;
-      }
-
-      table th:nth-child(8),
-      table td:nth-child(8) {
-        width: 250px;
-      }
-
-      table th:nth-child(9),
-      table td:nth-child(9) {
-        width: 100px;
-      }
-
       table tr:hover {
         background-color: #f9f9f9;
       }
@@ -183,7 +138,7 @@
         <ul>
           <li><a href="#!/admin/users">Users</a></li>
           <li><a href="#!/admin/products">Products</a></li>
-          <li><a href="#">Orders</a></li>
+          <li><a href="#!/admin/orders">Orders</a></li>
         </ul>
         <button class="logout-btn" ng-click="logout()">Logout</button>
       </div>
@@ -222,11 +177,12 @@
           </div>
         </div>
 
+        <!-- User Table -->
         <div ng-if="users.length === 0">
           <p>No users found.</p>
         </div>
 
-        <table ng-if="users.length > 0">
+        <table ng-if="filteredUsers.length > 0">
           <thead>
             <tr>
               <th>ID</th>
@@ -242,7 +198,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="user in users">
+            <tr ng-repeat="user in filteredUsers">
               <td>{{ user.id }}</td>
               <td>{{ user.username }}</td>
               <td>{{ user.firstName }}</td>
@@ -264,6 +220,20 @@
             </tr>
           </tbody>
         </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button ng-click="previousPage()" ng-disabled="currentPage === 1">
+            Previous
+          </button>
+          <span>Page {{ currentPage }} of {{ totalPages() }}</span>
+          <button
+            ng-click="nextPage()"
+            ng-disabled="currentPage === Math.ceil(users.length / itemsPerPage)"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   </body>
